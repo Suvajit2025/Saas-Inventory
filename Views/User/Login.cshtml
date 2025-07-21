@@ -1,0 +1,134 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en-in">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In | My Invoice App</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/main.css" type="text/css">
+    <link href="~/css/signup.css" rel="stylesheet" />
+    @* <link href="~/css/site.css" rel="stylesheet" /> *@
+</head>
+<body>
+    <div class="signup-wrapper">
+        <h2 class="mt-0">Sign In</h2>
+        <p>Create and manage invoices from one place.</p>
+
+       
+        <!-- Email or Mobile -->
+        <div class="input-group">
+            <div class="input-wrapper">
+                <i class="bi bi-person-fill"></i>
+                <input type="text" id="emailOrMobile" name="emailOrMobile" placeholder="Email or Mobile Number" required />
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="input-group">
+            <div class="input-wrapper">
+                <i class="bi bi-lock-fill"></i>
+                <input type="password" id="password" name="password" placeholder="Password" required />
+                <i class="bi bi-eye-slash toggle-password" data-target="#password" role="button" tabindex="0"></i>
+            </div>
+            <label class="error-message" id="Password-error"></label>
+            
+        </div>
+
+        <button class="btn" id="btnSignIn" type="submit">Sign In</button>
+
+        <div class="signin">Already a user? <a href="/User/SignUp">Sign In</a></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/js/form-validator.js"></script>
+    <script>
+        function validateRequiredFields(wrapperSelector) {
+          let isValid = true;
+          $(wrapperSelector + ' input[required]').each(function () {
+            const $input = $(this);
+            const val = $input.val().trim();
+
+            $input.next('.error-message').remove();
+            $input.removeClass('input-invalid input-valid');
+
+            if (!val) {
+              $input.addClass('input-invalid');
+              $input.after('<label class="error-message">This field is required</label>');
+              isValid = false;
+            } else {
+              $input.addClass('input-valid');
+            }
+          });
+          return isValid;
+        }
+
+        function attachInputValidationListeners() {
+          // Already called — placeholder for future input validations
+        }
+
+        $(document).ready(function () {
+          attachInputValidationListeners();
+
+          // Show/Hide password
+          $(document).on('click', '.toggle-password', function () {
+            const input = $($(this).data('target'));
+            const type = input.attr('type') === 'password' ? 'text' : 'password';
+            input.attr('type', type);
+            $(this).toggleClass('bi-eye bi-eye-slash');
+          });
+
+         
+          // Submit
+          $('#btnSignIn').click(function (e) {
+            e.preventDefault();
+            $('.error-message').remove();
+            const identifier = $('#emailOrMobile').val().trim();
+            const password = $('#password').val().trim();
+
+            if (!validateRequiredFields('.signup-wrapper')) return;
+
+            
+           const model = {
+                    EmailOrMobile: identifier,
+                    Password: password
+                };
+
+            $.ajax({
+                    url: '/User/signIn',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    data: JSON.stringify(model),
+                    beforeSend: function () {
+                        $('#btnSignIn').prop('disabled', true).text('Signing In...');
+                    },
+                    success: function () {
+                        alert('✅ Login successful!');
+                        window.location.href = "/dashboard"; // update as needed
+                    },
+                    error: function (xhr) {
+                        let message = "❌ Login failed.";
+                        if (xhr.responseJSON?.message) {
+                            message = xhr.responseJSON.message;
+                        } else if (xhr.responseText) {
+                            message = xhr.responseText;
+                        }
+                        alert(message);
+                    },
+                    complete: function () {
+                        $('#btnSignIn').prop('disabled', false).text('Sign In');
+                    }
+                });
+
+          });
+        });
+    </script>
+</body>
+</html>

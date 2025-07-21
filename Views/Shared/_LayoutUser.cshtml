@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>@ViewData["Title"] -A Invoice Solution</title>
+
+	<link rel="shortcut icon" href="~/assets/img/favicon.png">
+
+	@* <link rel="stylesheet" href="~/assets/css/bootstrap.min.css"> *@
+	<!-- ✅ Bootstrap CSS from LibMan -->
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+	<!-- FontAwesome & Feather Icons -->
+	<link rel="stylesheet" href="~/assets/plugins/fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" href="~/assets/plugins/fontawesome/css/all.min.css">
+	<link rel="stylesheet" href="~/assets/css/feather.css">
+	<!-- Add to <head> -->
+	<link href="~/lib/select2/dist/css/select2.min.css" rel="stylesheet" />
+
+	<!-- Custom App Styles -->
+	<link rel="stylesheet" href="~/assets/css/style.css">
+	@await RenderSectionAsync("Style", required: false)
+	<style>
+		.select2-container--default .select2-selection--single {
+			height: 38px !important;
+			padding: 6px 12px;
+			border-radius: 0 0.375rem 0.375rem 0;
+			border: 1px solid #ced4da;
+			background-color: #fff;
+		}
+
+		.select2-selection__rendered {
+			line-height: 24px !important;
+		}
+
+		.select2-selection__arrow {
+			height: 36px !important;
+		}
+
+		.input-group .select2-container {
+			flex: 1 1 auto;
+			width: 1% !important;
+		}
+	</style>
+
+</head>
+<body>
+
+	<div class="main-wrapper">
+
+		<div class="header">
+
+			<div class="header-left">
+				<a href="index.html" class="logo">
+					<img src="~/assets/img/logo.png" alt="Logo"> @* Comes From Database *@
+				</a>
+				<a href="index.html" class="logo logo-small">
+					<img src="~/assets/img/logo-small.png" alt="Logo" width="30" height="30"> @* Comes From Database *@
+				</a>
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="feather-chevrons-left"></i>
+				</a>
+			</div>
+
+
+			<div class="top-nav-search">
+				<div class="main">
+					<form class="search" method="post" action="">
+						<div class="s-icon"><i class="fas fa-search"></i></div>
+						<input type="text" class="form-control" placeholder="Start typing your Search..." />
+						<ul class="results">
+							<li>
+								<h6><i class="feather-calendar me-1"></i> Customer</h6>
+								<p>No matched Customer found. <a href="index.html"><span>View all</span></a></p>
+							</li>
+							
+						</ul>
+					</form>
+				</div>
+			</div>
+
+
+			<a class="mobile_btn" id="mobile_btn">
+				<i class="fas fa-bars"></i>
+			</a>
+
+
+			<ul class="nav nav-tabs user-menu">
+
+				<li class="nav-item">
+					<a href="#" id="dark-mode-toggle" class="dark-mode-toggle">
+						<i class="feather-sun light-mode"></i><i class="feather-moon dark-mode"></i>
+					</a>
+				</li>
+
+
+				<li class="nav-item dropdown noti-nav">
+					<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+						<i class="feather-bell"></i> <span class="badge"></span>
+					</a>
+					<div class="dropdown-menu notifications">
+						<div class="topnav-dropdown-header">
+							<span class="notification-title">Notifications</span>
+							<a href="javascript:void(0)" class="clear-noti"><i class="feather-more-vertical"></i></a>
+						</div>
+						@* <div class="noti-content"> *@
+						@* 	<ul class="notification-list"> *@
+						@* 		<li class="notification-message"> *@
+						@* 			<a href="#"> *@
+						@* 				<div class="media d-flex"> *@
+						@* 					<span class="avatar"> *@
+						@* 						<img class="avatar-img" alt="" src="assets/img/profiles/avatar-02.jpg"> *@
+						@* 					</span> *@
+						@* 					<div class="media-body"> *@
+						@* 						<h6>Travis Tremble <span class="notification-time">18.30 PM</span></h6> *@
+						@* 						<p class="noti-details">Sent a amount of $210 for his Appointment <span class="noti-title">Dr.Ruby perin </span></p> *@
+						@* 					</div> *@
+						@* 				</div> *@
+						@* 			</a> *@
+						@* 		</li> *@
+						@* 		<li class="notification-message"> *@
+						@* 			<a href="#"> *@
+						@* 				<div class="media d-flex"> *@
+						@* 					<span class="avatar"> *@
+						@* 						<img class="avatar-img" alt="" src="assets/img/profiles/avatar-05.jpg"> *@
+						@* 					</span> *@
+						@* 					<div class="media-body"> *@
+						@* 						<h6>Travis Tremble <span class="notification-time">12 Min Ago</span></h6> *@
+						@* 						<p class="noti-details"> has booked her appointment to <span class="noti-title">Dr. Hendry Watt</span></p> *@
+						@* 					</div> *@
+						@* 				</div> *@
+						@* 			</a> *@
+						@* 		</li> *@
+						@* 		<li class="notification-message"> *@
+						@* 			<a href="#"> *@
+						@* 				<div class="media d-flex"> *@
+						@* 					<div class="avatar"> *@
+						@* 						<img class="avatar-img" alt="" src="assets/img/profiles/avatar-03.jpg"> *@
+						@* 					</div> *@
+						@* 					<div class="media-body"> *@
+						@* 						<h6>Travis Tremble <span class="notification-time">6 Min Ago</span></h6> *@
+						@* 						<p class="noti-details"> Sent a amount $210 for his Appointment <span class="noti-title">Dr.Maria Dyen</span></p> *@
+						@* 					</div> *@
+						@* 				</div> *@
+						@* 			</a> *@
+						@* 		</li> *@
+						@* 		<li class="notification-message"> *@
+						@* 			<a href="#"> *@
+						@* 				<div class="media d-flex"> *@
+						@* 					<div class="avatar avatar-sm"> *@
+						@* 						<img class="avatar-img" alt="" src="assets/img/profiles/avatar-06.jpg"> *@
+						@* 					</div> *@
+						@* 					<div class="media-body"> *@
+						@* 						<h6>Travis Tremble <span class="notification-time">8.30 AM</span></h6> *@
+						@* 						<p class="noti-details"> Send a message to his doctor</p> *@
+						@* 					</div> *@
+						@* 				</div> *@
+						@* 			</a> *@
+						@* 		</li> *@
+						@* 	</ul> *@
+						@* </div> *@
+					</div>
+				</li>
+
+
+				<li class="nav-item dropdown main-drop">
+					<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+						<span class="user-img">
+							<img src="~/assets/img/profiles/avatar-01.jpg" alt=""> @* Comes From Database *@
+							<span class="status online"></span>
+						</span>
+					</a>
+					<div class="dropdown-menu">
+						<div class="user-header">
+							<div class="avatar avatar-sm">
+								<img src="~/assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle"> @* Comes From Database *@
+							</div>
+							<div class="user-text">
+								<h6>Tenant Admin User</h6> @* Comes From Database User *@
+								<p class="text-muted mb-0">Administrator</p> @* Comes From Database Role *@
+							</div>
+						</div>
+						<a class="dropdown-item" href="profile.html"><i class="feather-user me-1"></i> My Profile</a>
+						<a class="dropdown-item" href="profile.html"><i class="feather-edit me-1"></i> Edit Profile</a>
+						<a class="dropdown-item" href="account-settings.html"><i class="feather-sliders me-1"></i> Account Settings</a>
+						<hr class="my-0 ms-2 me-2">
+						<a class="dropdown-item" href="/User/SignIn.cshtml"><i class="feather-log-out me-1"></i> Logout</a>
+					</div>
+				</li>
+
+			</ul>
+
+		</div>
+
+
+		<div class="sidebar" id="sidebar">
+			<div class="sidebar-inner slimscroll">
+				<div id="sidebar-menu" class="sidebar-menu">
+					<ul>
+						<li class="menu-title"><span>Main</span></li>
+						<li class="active">
+							<a href="/Home/Dashboard.cshtml"><i class="feather-grid"></i> <span>Dashboard</span></a>
+						</li>
+						
+						<li class="menu-title">
+							<span>Master List</span>
+						</li>
+						<li class="submenu">
+							<a href="#"><i class="feather-file-plus"></i> <span> Party Details</span> <span class="menu-arrow"></span></a>
+							<ul>
+								<li><a href="/Client/Index">Add Party</a></li>
+								<li><a href="pharmacy-category.html">View Party</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="page-wrapper">
+			@RenderBody()
+		</div>
+
+	</div>
+
+
+	@* <script src="~/assets/js/jquery-3.6.0.min.js" type="67b883aec4a60abd4690ae73-text/javascript"></script> *@
+
+	@* <script src="~/assets/js/bootstrap.bundle.min.js" type="67b883aec4a60abd4690ae73-text/javascript"></script> *@
+	<!-- Scripts -->
+	<script src="~/assets/js/jquery-3.6.0.min.js"></script>
+
+	<!-- ✅ Bootstrap JS (bundle includes Popper) -->
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+	<script src="~/assets/js/feather.min.js"></script>
+	<script src="~/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="~/assets/js/script.js"></script>
+	<!-- Add before </body> -->
+	<script src="~/lib/select2/dist/js/select2.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			// Initialize all .select2 elements
+			$('.select2').select2({
+				width: '100%'
+			});
+
+			// Generic focus handler for all select2 dropdowns
+			$(document).on('select2:open', () => {
+				let searchBox = document.querySelector('.select2-container--open .select2-search__field');
+				if (searchBox) {
+					searchBox.focus();
+				}
+			});
+		});
+	</script>
+
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+ 
+</html>

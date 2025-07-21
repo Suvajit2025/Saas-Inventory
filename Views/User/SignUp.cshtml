@@ -1,0 +1,229 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en-in">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up | My Invoice App</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/main.css" type="text/css">
+    <link href="~/css/signup.css" rel="stylesheet" />
+    @* <link href="~/css/site.css" rel="stylesheet" /> *@
+</head>
+<body>
+    <div class="signup-wrapper">
+        <h2 class="mt-0">Sign Up</h2>
+        <p>Create and manage invoices from one place.</p>
+
+        <!-- Company Name -->
+        <div class="input-group">
+            <div class="input-wrapper">
+                <i class="bi bi-building"></i>
+                <input type="text" id="company" name="company" placeholder="Company Name" required />
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="input-group">
+            <div class="input-wrapper">
+                <i class="bi bi-envelope-fill"></i>
+                <input type="email" id="email" name="email" placeholder="Email Address" required />
+            </div>
+        </div>
+
+        <!-- Mobile -->
+        <div class="input-group">
+            <div class="input-wrapper">
+                <i class="bi bi-phone-fill"></i>
+                <input type="tel" id="mobile" name="mobile" placeholder="Mobile Number" required pattern="[0-9]{10}" />
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="input-group">
+            <div class="input-wrapper">
+                <i class="bi bi-lock-fill"></i>
+                <input type="password" id="password" name="password" placeholder="Password" required />
+                <i class="bi bi-eye-slash toggle-password" data-target="#password" role="button" tabindex="0"></i>
+            </div>
+            <label class="error-message" id="Password-error"></label>
+            <label class="strength-message" id="strength-status"></label>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="input-group">
+            <div class="input-wrapper">
+                <i class="bi bi-lock-fill"></i>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required />
+                <i class="bi bi-eye-slash toggle-password" data-target="#confirmPassword" role="button" tabindex="0"></i>
+            </div>
+            <label class="error-message" id="confirmPassword-error"></label>
+            <label class="match-message" id="match-status"></label>
+        </div>
+
+
+        <div class="terms">
+            <label class="terms-label">
+                <input type="checkbox" id="agreeTerms" required />
+                <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</span>
+            </label>
+        </div>
+
+        <button class="btn" id="btnSignUp" type="submit">Sign Up</button>
+
+        <div class="signin">Already a user? <a href="/User/Login">Sign In</a></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="~/js/form-validator.js"></script>
+    <script>
+        function validateRequiredFields(wrapperSelector) {
+          let isValid = true;
+          $(wrapperSelector + ' input[required]').each(function () {
+            const $input = $(this);
+            const val = $input.val().trim();
+
+            $input.next('.error-message').remove();
+            $input.removeClass('input-invalid input-valid');
+
+            if (!val) {
+              $input.addClass('input-invalid');
+              $input.after('<label class="error-message">This field is required</label>');
+              isValid = false;
+            } else {
+              $input.addClass('input-valid');
+            }
+          });
+          return isValid;
+        }
+
+        function attachInputValidationListeners() {
+          // Already called — placeholder for future input validations
+        }
+
+        $(document).ready(function () {
+          attachInputValidationListeners();
+
+          // Show/Hide password
+          $(document).on('click', '.toggle-password', function () {
+            const input = $($(this).data('target'));
+            const type = input.attr('type') === 'password' ? 'text' : 'password';
+            input.attr('type', type);
+            $(this).toggleClass('bi-eye bi-eye-slash');
+          });
+
+          // Password strength
+          $('#password').on('input', function () {
+            const password = $(this).val();
+            const $status = $('#strength-status');
+            const $input = $(this);
+            let strength = 0;
+
+            if (password.length >= 6) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[a-z]/.test(password)) strength++;
+            if (/\d/.test(password)) strength++;
+            if (/[\W_]/.test(password)) strength++;
+
+            if (!password) {
+              $status.text('').removeClass('weak medium strong');
+              $input.removeClass('input-valid input-invalid');
+              return;
+            }
+
+            if (strength <= 2) {
+              $status.text('Weak password').removeClass('medium strong').addClass('weak');
+              $input.removeClass('input-valid').addClass('input-invalid');
+            } else if (strength <= 4) {
+              $status.text('Medium strength password').removeClass('weak strong').addClass('medium');
+              $input.removeClass('input-valid input-invalid');
+            } else {
+              $status.text('Strong password').removeClass('weak medium').addClass('strong');
+              $input.removeClass('input-invalid').addClass('input-valid');
+            }
+          });
+
+          // Password match
+          $('#confirmPassword').on('input', function () {
+            const password = $('#password').val();
+            const confirmPassword = $(this).val();
+            const $status = $('#match-status');
+
+            if (!confirmPassword) {
+              $(this).removeClass('input-valid input-invalid');
+              $status.text('').removeClass('success error');
+              return;
+            }
+
+            if (password === confirmPassword) {
+              $(this).removeClass('input-invalid').addClass('input-valid');
+              $status.text('✅ Passwords match').removeClass('error').addClass('success');
+            } else {
+              $(this).removeClass('input-valid').addClass('input-invalid');
+              $status.text('❌ Passwords do not match').removeClass('success').addClass('error');
+            }
+          });
+
+          // Submit
+          $('#btnSignUp').click(function (e) {
+            e.preventDefault();
+            $('.error-message').remove();
+
+            if (!validateRequiredFields('.signup-wrapper')) return;
+
+            if (!$('#agreeTerms').is(':checked')) {
+              alert('Please agree to the Terms of Service and Privacy Policy.');
+              return;
+            }
+
+            if ($('#password').val() !== $('#confirmPassword').val()) {
+              alert('Passwords do not match.');
+              return;
+            }
+
+            const model = {
+              Company: $('#company').val(),
+              Email: $('#email').val(),
+              Mobile: $('#mobile').val(),
+              Password: $('#password').val(),
+              ConfirmPassword: $('#confirmPassword').val()
+            };
+
+            $.ajax({
+                url: '/User/signup',
+                type: 'POST',
+                contentType: 'application/json',
+                dataType: 'json', // Ensures response is parsed as JSON
+                data: JSON.stringify(model),
+                beforeSend: function () {
+                $('#btnSignUp').prop('disabled', true).text('Signing Up...');
+                },
+                success: function (response) {
+                alert('✅ Signup successful!');
+                window.location.href = "/User/login";
+                },
+                error: function (xhr) {
+                let message = "❌ An error occurred.";
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    message = xhr.responseJSON.message;
+                } else if (xhr.responseText) {
+                    message = xhr.responseText;
+                }
+                alert(message);
+                },
+                complete: function () {
+                $('#btnSignUp').prop('disabled', false).text('Sign Up');
+                }
+            });
+
+          });
+        });
+    </script>
+</body>
+</html>
