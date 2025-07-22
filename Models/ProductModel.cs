@@ -19,8 +19,8 @@
         public decimal? SellingPrice { get; set; }
         public decimal? CostPrice { get; set; }
 
-        public int? GstId { get; set; }
-        public bool? IsTaxInclusive { get; set; }
+        public int? GstRateId { get; set; }
+        public bool IsTaxInclusive { get; set; }
         public int? IsActive { get; set; }
 
         public DateTime? CreatedOn { get; set; }

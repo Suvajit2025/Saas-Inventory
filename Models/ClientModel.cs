@@ -6,155 +6,152 @@
 
     public class PartyViewModel
     {
-        public long PartyId { get; set; }
-        public long TenantId { get; set; }
-        public long? OrganizationId { get; set; }
+        public long? PartyId { get; set; } // Nullable long
+        public long? TenantId { get; set; } // Nullable long
+        public long? OrganizationId { get; set; } // Nullable long
 
-        public string NamePrefix { get; set; }
-        public string ContactName { get; set; }
-        public string CompanyName { get; set; }
-        public Guid PartyCode { get; set; }
+        public string? NamePrefix { get; set; } // Nullable string
+        public string? ContactName { get; set; } // Nullable string
+        public string? CompanyName { get; set; } // Nullable string
+        public Guid? PartyCode { get; set; } // Nullable Guid
 
-        public int PartyTypeId { get; set; }
-        public int CustomerTypeId { get; set; }
-        public int? BillingModeId { get; set; }
+        public int? PartyTypeId { get; set; } // Nullable int
+        public int? CustomerTypeId { get; set; } // Nullable int
+        public int? BillingModeId { get; set; } // Nullable int
 
-        public string GSTIN { get; set; }
-        public string PAN { get; set; }
+        public string? GSTIN { get; set; } // Nullable string
+        public string? PAN { get; set; } // Nullable string
 
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public int StateId { get; set; }
-        public string PinCode { get; set; }
-        public string CreditDays { get; set; }
-        public string Creditamount { get; set; }
-        public bool IsActive { get; set; } = true;
-        public bool EnablePortal { get; set; } = false;
-        public DateTime CreatedOn { get; set; } = DateTime.Now;
-        public long? CreatedBy { get; set; }
+        public string? Phone { get; set; } // Nullable string
+        public string? Email { get; set; } // Nullable string
+        public string? Address { get; set; } // Nullable string
+        public string? City { get; set; } // Nullable string
+        public int? StateId { get; set; } // Nullable int
+        public string? PinCode { get; set; } // Nullable string
+        public string? CreditDays { get; set; } // Nullable string
+        public string? Creditamount { get; set; } // Nullable string
+        public bool? IsActive { get; set; } = null; // Nullable bool
+        public bool? EnablePortal { get; set; } = null; // Nullable bool
+        public DateTime? CreatedOn { get; set; } = null; // Nullable DateTime
+        public long? CreatedBy { get; set; } // Nullable long
 
-        public List<StateList> stateLists { get; set; } = new();
-        public List<PartyType> PartyTypes { get; set; } = new();
-        public List<CustomerType> CustomerTypes { get; set; } = new();
-        public List<BillingMode> BillingModes { get; set; } = new();
-        public List<PaymentTerm> PaymentTerms { get; set; } = new();  // ✅ Renamed to avoid class/property conflict
-        public List<DiscountModeMaster> DiscountModes { get; set; } = new();
-        public List<AddressType> AddressTypes { get; set; } = new();
+        public List<StateList>? stateLists { get; set; } // Nullable List
+        public List<PartyType>? PartyTypes { get; set; } // Nullable List
+        public List<CustomerType>? CustomerTypes { get; set; } // Nullable List
+        public List<BillingMode>? BillingModes { get; set; } // Nullable List
+        public List<PaymentTerm>? PaymentTerms { get; set; } // Nullable List
+        public List<DiscountModeMaster>? DiscountModes { get; set; } // Nullable List
+        public List<AddressType>? AddressTypes { get; set; } // Nullable List
 
-        public ContactPersonViewModel NewContactPerson { get; set; } = new();
-        public List<ContactPersonViewModel> ContactPersons { get; set; } = new();
-        public PartyAddressViewModel Partyaddress { get; set; } = new();
-        public PartyOtherDetailsViewModel OtherDetails { get; set; } = new();
+        public ContactPersonViewModel? NewContactPerson { get; set; } // Nullable object
+        public List<ContactPersonViewModel>? ContactPersons { get; set; } // Nullable List
+        public PartyAddressViewModel? Partyaddress { get; set; } // Nullable object
+        public PartyOtherDetailsViewModel? OtherDetails { get; set; } // Nullable object
     }
 
     public class PartyType
     {
-        public int PartyTypeId { get; set; }
-        public string TypeCode { get; set; }
-        public string TypeName { get; set; }
+        public int? PartyTypeId { get; set; } // Nullable int
+        public string? TypeCode { get; set; } // Nullable string
+        public string? TypeName { get; set; } // Nullable string
     }
 
     public class CustomerType
     {
-        public int CustomerTypeId { get; set; }
-        public string TypeCode { get; set; }
-        public string TypeName { get; set; }
+        public int? CustomerTypeId { get; set; } // Nullable int
+        public string? TypeCode { get; set; } // Nullable string
+        public string? TypeName { get; set; } // Nullable string
     }
 
     public class BillingMode
     {
-        public int BillingModeId { get; set; }
-        public string ModeCode { get; set; }
-        public string ModeName { get; set; }
+        public int? BillingModeId { get; set; } // Nullable int
+        public string? ModeCode { get; set; } // Nullable string
+        public string? ModeName { get; set; } // Nullable string
     }
 
     public class AddressType
     {
-        public int AddressTypeId { get; set; }
-        public string TypeCode { get; set; }
-        public string TypeName { get; set; }
-    }
-    public class StateList
-    {
-        public int StateId { get; set; }
-        public string StateName { get; set; }
+        public int? AddressTypeId { get; set; } // Nullable int
+        public string? TypeCode { get; set; } // Nullable string
+        public string? TypeName { get; set; } // Nullable string
     }
 
-    public class PaymentTerm   // ✅ renamed from PaymentTerms to avoid collision
+    public class StateList
     {
-        public int PaymentTermsId { get; set; }
-        public string TermCode { get; set; }
-        public string TermName { get; set; }
-        public int CreditDays { get; set; }
-        public string? Description { get; set; }
+        public int? StateId { get; set; } // Nullable int
+        public string? StateName { get; set; } // Nullable string
+    }
+
+    public class PaymentTerm
+    {
+        public int? PaymentTermsId { get; set; } // Nullable int
+        public string? TermCode { get; set; } // Nullable string
+        public string? TermName { get; set; } // Nullable string
+        public int? CreditDays { get; set; } // Nullable int
+        public string? Description { get; set; } // Nullable string
     }
 
     public class DiscountModeMaster
     {
-        public int DiscountModeId { get; set; }
-        public string ModeCode { get; set; }
-        public string ModeName { get; set; }
+        public int? DiscountModeId { get; set; } // Nullable int
+        public string? ModeCode { get; set; } // Nullable string
+        public string? ModeName { get; set; } // Nullable string
     }
 
     public class ContactPersonViewModel
     {
-        public long ContactPersonId { get; set; }
-        public long PartyId { get; set; }
-        public string? Prefix { get; set; }
-        public string FirstName { get; set; } = string.Empty;
-        public string? MiddleName { get; set; }
-        public string? LastName { get; set; }
-        public string? Department { get; set; }
-        public string? Designation { get; set; }
-        public string? Email { get; set; }
-        public string? Phone { get; set; }
-        public bool? IsPrimary { get; set; } = false;
+        public long? ContactPersonId { get; set; } // Nullable long
+        public long? PartyId { get; set; } // Nullable long
+        public string? Prefix { get; set; } // Nullable string
+        public string? FirstName { get; set; } // Nullable string
+        public string? MiddleName { get; set; } // Nullable string
+        public string? LastName { get; set; } // Nullable string
+        public string? Department { get; set; } // Nullable string
+        public string? Designation { get; set; } // Nullable string
+        public string? Email { get; set; } // Nullable string
+        public string? Phone { get; set; } // Nullable string
+        public bool? IsPrimary { get; set; } = null; // Nullable bool
     }
 
     public class PartyAddressViewModel
     {
-        // Common Fields
-        public long PartyId { get; set; }
-        public DateTime CreatedOn { get; set; } = DateTime.Now;
-        public bool IsDefault { get; set; } = false;
-        public List<AddressType>? AddressTypes { get; set; }
+        public long? PartyId { get; set; } // Nullable long
+        public DateTime? CreatedOn { get; set; } = null; // Nullable DateTime
+        public bool? IsDefault { get; set; } = null; // Nullable bool
+        public List<AddressType>? AddressTypes { get; set; } // Nullable List
 
-        // Billing Address
-        public int BillingAddressTypeId { get; set; } = 1;
-        public string BillingAddressLineOne { get; set; } 
-        public string? BillingAddressLineTwo { get; set; } = string.Empty;
-        public string BillingCity { get; set; } = string.Empty;
-        public int BillingStateId { get; set; }
-        public string BillingPINCode { get; set; } = string.Empty;
-        public string? BillingPhone { get; set; }
-        public string? BillingEmail { get; set; }
+        public int? BillingAddressTypeId { get; set; } = null; // Nullable int
+        public string? BillingAddressLineOne { get; set; } // Nullable string
+        public string? BillingAddressLineTwo { get; set; } = null; // Nullable string
+        public string? BillingCity { get; set; } = null; // Nullable string
+        public int? BillingStateId { get; set; } = null; // Nullable int
+        public string? BillingPINCode { get; set; } = null; // Nullable string
+        public string? BillingPhone { get; set; } = null; // Nullable string
+        public string? BillingEmail { get; set; } = null; // Nullable string
 
-        // Shipping Address
-        public int ShippingAddressTypeId { get; set; } = 2;
-        public string ShippingAddressLineOne { get; set; } = string.Empty;
-        public string? ShippingAddressLineTwo { get; set; }
-        public string ShippingCity { get; set; } = string.Empty;
-        public int ShippingStateId { get; set; }
-        public string ShippingPINCode { get; set; } = string.Empty;
-        public string? ShippingPhone { get; set; }
-        public string? ShippingEmail { get; set; }
+        public int? ShippingAddressTypeId { get; set; } = null; // Nullable int
+        public string? ShippingAddressLineOne { get; set; } = null; // Nullable string
+        public string? ShippingAddressLineTwo { get; set; } = null; // Nullable string
+        public string? ShippingCity { get; set; } = null; // Nullable string
+        public int? ShippingStateId { get; set; } = null; // Nullable int
+        public string? ShippingPINCode { get; set; } = null; // Nullable string
+        public string? ShippingPhone { get; set; } = null; // Nullable string
+        public string? ShippingEmail { get; set; } = null; // Nullable string
     }
-
 
     public class PartyOtherDetailsViewModel
     {
-        public long PartyOtherDetailsId { get; set; }
-        public long PartyId { get; set; }
-        public int PaymentTermsId { get; set; }
-        public decimal? CreditLimit { get; set; }
-        public string? BillingInstructions { get; set; }
-        public string? DeliveryInstructions { get; set; }
-        public string? GSTTreatment { get; set; }
-        public bool IsTDSApplicable { get; set; } = false;
-        public string? OtherNotes { get; set; }
-        public DateTime CreatedOn { get; set; } = DateTime.Now;
-        public List<PaymentTerm>? PaymentTermsList { get; set; }
+        public long? PartyOtherDetailsId { get; set; } // Nullable long
+        public long? PartyId { get; set; } // Nullable long
+        public int? PaymentTermsId { get; set; } = null; // Nullable int
+        public decimal? CreditLimit { get; set; } = null; // Nullable decimal
+        public string? BillingInstructions { get; set; } = null; // Nullable string
+        public string? DeliveryInstructions { get; set; } = null; // Nullable string
+        public string? GSTTreatment { get; set; } = null; // Nullable string
+        public bool? IsTDSApplicable { get; set; } = null; // Nullable bool
+        public string? OtherNotes { get; set; } = null; // Nullable string
+        public DateTime? CreatedOn { get; set; } = null; // Nullable DateTime
+        public List<PaymentTerm>? PaymentTermsList { get; set; } = null; // Nullable List
     }
 }

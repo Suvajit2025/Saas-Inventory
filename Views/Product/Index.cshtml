@@ -3,6 +3,36 @@
     ViewData["Title"] = "Product";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
+<style>
+	.form-check-input-Check {
+		margin-top: 1em; /* Adjust the margin at the top */
+		width: 1.25em; /* Adjust size */
+		height: 1.25em; /* Adjust size */
+		border: 2px solid #007bff; /* Deep blue border */
+		background-color: #fff; /* White background */
+		border-radius: 4px; /* Rounded corners */
+		transition: all 0.3s ease; /* Smooth transition */
+	}
+
+		.form-check-input-Check:checked {
+			background-color: #007bff; /* Change background to blue when checked */
+			border-color: #0056b3; /* Darker blue border when checked */
+			box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Light shadow around checked state */
+		}
+
+		.form-check-input-Check:hover {
+			border-color: #0056b3; /* Darker border on hover */
+			cursor: pointer; /* Change cursor to pointer */
+		}
+
+		.form-check-input-Check:focus {
+			border-color: #28a745; /* Green border when focused */
+			box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Green shadow around focused state */
+			outline: none; /* Remove default outline */
+		}
+
+	 
+</style>
 
  
 <div class="content container-fluid pb-0">
@@ -21,7 +51,7 @@
 									<div class="row">
 										<label for="CustomerType" class="col-form-label col-lg-4">
 											Product Type
-											<i class="bi bi-info-circle text-primary m-1" data-bs-toggle="tooltip" title="The contacts which are associated to any Account in CRM is of type Business and the other contacts will be of type Individual."></i>
+											<i class="bi bi-info-circle text-primary m-1" data-bs-toggle="tooltip" title="Select the classification of the product, such as Physical, Digital, etc."></i>
 										</label>
 										<div class="inline-fields col-lg-8 d-flex align-items-center flex-wrap gap-2">
 											@foreach (var type in Model.ProductTypeList)
@@ -39,10 +69,21 @@
 									<div class="row">
 										<label for="PartyName" class="col-form-label col-lg-4">
 											Product Name
-											<i class="bi bi-info-circle text-primary m-1" data-bs-toggle="tooltip" title="This is the legal or business name of the party."></i>
+											<i class="bi bi-info-circle text-primary m-1" data-bs-toggle="tooltip" title="Enter the official name of the product being sold."></i>
 										</label>
 										<div class="inline-fields col-lg-8">
 											@Html.TextBoxFor(m => m.ProductName, new { @class = "form-control", placeholder = "Enter Product name" })
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<label for="PartyName" class="col-form-label col-lg-4">
+											Product Description
+											<i class="bi bi-info-circle text-primary m-1" data-bs-toggle="tooltip" title="Provide a brief description of the product. This will help users understand the features of the product."></i>
+										</label>
+										<div class="inline-fields col-lg-8">
+											@Html.TextAreaFor(m => m.Description, new { @class = "form-control", placeholder = "Enter Product Description" })
 										</div>
 									</div>
 								</div>
@@ -51,23 +92,18 @@
 									<div class="row">
 										<label for="Email" class="col-form-label col-lg-4">
 											HSN/SAC Code
-											<i class="bi bi-info-circle text-primary m-1" data-bs-toggle="tooltip" data-bs-html="true" title="<b>Privacy Info:</b>This data will be stored without encryption and will be visible only to your organisation users who have the required permission."></i>
+											<i class="bi bi-info-circle text-primary m-1" data-bs-toggle="tooltip" data-bs-html="true" title="Enter the Harmonized System of Nomenclature (HSN) or Services Accounting Code (SAC) for the product. This code is used for tax purposes and categorizes the product under the correct tax slab."></i>
 										</label>
 										<div class="inline-fields col-lg-8">
-											<div class="input-group">
-												<span class="input-group-text">
-													<i class="bi bi-envelope"></i>
-												</span>
-												@Html.TextBoxFor(m => m.HSNSACCode, new { @class = "form-control", placeholder = "Enter HSN/SAC Code" })
-											</div>
+											@Html.TextBoxFor(m => m.HSNSACCode, new { @class = "form-control", placeholder = "Enter HSN/SAC Code" })
 										</div>
 									</div>
 								</div> 
 								<div class="form-group">
 									<div class="row">
-										<label for="StateId" class="col-form-label col-sm-4">
+										<label for="UnitId" class="col-form-label col-sm-4">
 											Sale Unit
-											<i class="bi bi-info-circle text-primary m-1" data-bs-toggle="tooltip" title="Select the classification of the party, such as Customer, Vendor, or Supplier."></i>
+											<i class="bi bi-info-circle text-primary m-1" data-bs-toggle="tooltip" title="Select the unit of measurement for the product, such as Piece, Kg, or Liter."></i>
 										</label>
 										<div class="col-sm-8">
 											<div class="input-group">
@@ -80,13 +116,11 @@
 													{
 														if (Model.SalesUnitId == item.UnitId)
 														{
-															@:
-															<option value="@item.UnitId" selected>@item.UnitName</option>
+															@:<option value="@item.UnitId" selected>@item.UnitName</option>
 														}
 														else
 														{
-															@:
-															<option value="@item.UnitId">@item.UnitName</option>
+															@:<option value="@item.UnitId">@item.UnitName</option>
 														}
 													}
 												</select>
@@ -94,8 +128,72 @@
 										</div>
 									</div>
 								</div>
+								
 							</div>
 							<div class="col-md-6">
+								<div class="form-group">
+									<div class="row">
+										<label for="Price" class="col-form-label col-lg-4">
+											Purchase Price
+											<i class="bi bi-info-circle text-primary m-1" data-bs-toggle="tooltip" data-bs-html="true" title="Enter the cost price of the product. This is the price at which you purchased the product before applying any taxes or markup."></i>
+										</label>
+										<div class="inline-fields col-lg-8">
+											@Html.TextBoxFor(m => m.PurchasePrice, new { @class = "form-control", placeholder = "Enter Purchase Price" })
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<label for="Price" class="col-form-label col-lg-4">
+											Sale Price
+											<i class="bi bi-info-circle text-primary m-1" data-bs-toggle="tooltip" data-bs-html="true" title="Enter the price at which the product will be sold to the customer. This is the price you charge the customer, including taxes and any markup."></i>
+										</label>
+										<div class="inline-fields col-lg-8">
+											@Html.TextBoxFor(m => m.SellingPrice, new { @class = "form-control", placeholder = "Enter Sale Price" })
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<label for="gstrateId" class="col-form-label col-sm-4">
+											Gst Rate
+											<i class="bi bi-info-circle text-primary m-1" data-bs-toggle="tooltip" title="Select the applicable GST rate for the product."></i>
+										</label>
+										<div class="col-sm-8">
+											<div class="input-group">
+												<span class="input-group-text">
+													<i class="bi bi-menu-app"></i>
+												</span>
+												<select id="GstRateId" name="GstRateId" class="form-control select2">
+													<option selected>-- Select Gst Rate --</option>
+													@foreach (var item in Model.GstList)
+													{
+														if (Model.GstRateId == item.GstId)
+														{
+															@:<option value="@item.GstId" selected>@item.GstRate</option>
+														}
+														else
+														{
+															@:<option value="@item.GstId">@item.GstRate</option>
+														}
+													}
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<label for="IsTaxInclusive" class="col-form-label col-lg-4">
+											Is Tax Inclusive
+											<i class="bi bi-info-circle text-primary m-1" data-bs-toggle="tooltip" data-bs-html="true" title="Check this option if the product's price includes tax. If unchecked, the tax will be added on top of the product price."></i>
+										</label>
+										<div class="inline-fields col-lg-8">
+											@Html.CheckBoxFor(m => m.IsTaxInclusive, new { @class = "form-check-input-Check" })
+
+										</div>
+									</div>
+								</div>
 								
 							</div>
 						</div>

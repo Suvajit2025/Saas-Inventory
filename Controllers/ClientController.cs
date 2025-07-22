@@ -78,5 +78,35 @@ namespace Invi.Controllers
 
             return View(viewModel);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> SavePartyDetails(PartyViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Process the data (e.g., save to database)
+                    // Example: Save the party data (you can replace this with your actual database save logic)
+                    // _partyService.SaveParty(model);
+
+                    // If the data was saved successfully, return a success response with a message
+                    return Json(new { success = true, message = "Party details saved successfully." });
+                }
+                catch (Exception ex)
+                {
+                    // Handle any errors that occur during the process
+                    return Json(new { success = false, message = "An error occurred: " + ex.Message });
+                }
+            }
+            else
+            {
+                // If the model validation fails, return the validation errors
+                var errors = ModelState.Values.SelectMany(v => v.Errors)
+                                              .Select(e => e.ErrorMessage).ToList();
+                return Json(new { success = false, message = string.Join(", ", errors) });
+            }
+        }
+
     }
 }

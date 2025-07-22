@@ -3,36 +3,36 @@
   "WorkspaceRootPath": "D:\\APP\\InvoiceSystem\\Invi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\client\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:views\\client\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\models\\productmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:models\\productmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\controllers\\clientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:controllers\\clientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\models\\clientmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:models\\clientmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\shared\\_layoutuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:views\\shared\\_layoutuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\models\\clientmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:models\\clientmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\models\\commonmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:models\\commonmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\user\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -74,20 +74,12 @@
       "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\helperclass\\generalsevice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:helperclass\\generalsevice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\models\\commonmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:models\\commonmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -109,116 +101,33 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Product\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Product\\Index.cshtml",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Product\\Index.cshtml",
-              "RelativeToolTip": "Views\\Product\\Index.cshtml",
-              "ViewState": "AgIAADwAAAAAAAAAAAAAAEEAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-20T14:11:27.125Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Client\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Client\\Index.cshtml",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Client\\Index.cshtml",
-              "RelativeToolTip": "Views\\Client\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4BAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-13T14:23:13.586Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductModel.cs",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Models\\ProductModel.cs",
-              "RelativeDocumentMoniker": "Models\\ProductModel.cs",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Models\\ProductModel.cs",
-              "RelativeToolTip": "Models\\ProductModel.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAxwCkAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-20T14:02:03.994Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "Controllers\\ProductController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAUwBIAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-20T06:28:12.489Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_LayoutUser.cshtml",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Shared\\_LayoutUser.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_LayoutUser.cshtml",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Shared\\_LayoutUser.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_LayoutUser.cshtml",
-              "ViewState": "AgIAAMsAAAAAAAAAAAAIwC0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-13T07:56:41.641Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "style.css",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\wwwroot\\assets\\css\\style.css",
-              "RelativeDocumentMoniker": "wwwroot\\assets\\css\\style.css",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\wwwroot\\assets\\css\\style.css",
-              "RelativeToolTip": "wwwroot\\assets\\css\\style.css",
-              "ViewState": "AgIAAIEBAAAAAAAAAIAwwJQBAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-07-14T02:03:37.632Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\User\\Login.cshtml",
-              "RelativeDocumentMoniker": "Views\\User\\Login.cshtml",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\User\\Login.cshtml",
-              "RelativeToolTip": "Views\\User\\Login.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-13T06:22:02.007Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAmwHYAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T03:27:12.904Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "ClientController.cs",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\ClientController.cs",
               "RelativeDocumentMoniker": "Controllers\\ClientController.cs",
               "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\ClientController.cs",
               "RelativeToolTip": "Controllers\\ClientController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBwAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAowFMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T14:05:58.627Z"
+              "WhenOpened": "2025-07-13T14:05:58.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Client\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Client\\Index.cshtml",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Client\\Index.cshtml",
+              "RelativeToolTip": "Views\\Client\\Index.cshtml",
+              "ViewState": "AgIAACQBAAAAAAAAAAAUwDEBAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-13T14:23:13.586Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -258,15 +167,100 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
+              "Title": "CommonModels.cs",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Models\\CommonModels.cs",
+              "RelativeDocumentMoniker": "Models\\CommonModels.cs",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Models\\CommonModels.cs",
+              "RelativeToolTip": "Models\\CommonModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-12T13:10:07.433Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ClientModel.cs",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Models\\ClientModel.cs",
               "RelativeDocumentMoniker": "Models\\ClientModel.cs",
               "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Models\\ClientModel.cs",
               "RelativeToolTip": "Models\\ClientModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAywDIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-13T16:45:42.964Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAAC8AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-13T07:57:36.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_LayoutUser.cshtml",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Shared\\_LayoutUser.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_LayoutUser.cshtml",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Shared\\_LayoutUser.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_LayoutUser.cshtml",
+              "ViewState": "AgIAANwAAAAAAAAAAAAAAOgAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-13T07:56:41.641Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAmwHYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T03:27:12.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\User\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\User\\Login.cshtml",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\User\\Login.cshtml",
+              "RelativeToolTip": "Views\\User\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-13T06:22:02.007Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "style.css",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\wwwroot\\assets\\css\\style.css",
+              "RelativeDocumentMoniker": "wwwroot\\assets\\css\\style.css",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\wwwroot\\assets\\css\\style.css",
+              "RelativeToolTip": "wwwroot\\assets\\css\\style.css",
+              "ViewState": "AgIAAIEBAAAAAAAAAIAwwJQBAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-14T02:03:37.632Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Controllers\\ProductController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAACkAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T06:28:12.489Z"
             },
             {
               "$type": "Document",
@@ -331,18 +325,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 18,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-13T07:57:36.673Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
@@ -354,19 +336,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "CommonModels.cs",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Models\\CommonModels.cs",
-              "RelativeDocumentMoniker": "Models\\CommonModels.cs",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Models\\CommonModels.cs",
-              "RelativeToolTip": "Models\\CommonModels.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-12T13:10:07.433Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 19,
               "Title": "GeneralSevice.cs",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\HelperClass\\GeneralSevice.cs",
               "RelativeDocumentMoniker": "HelperClass\\GeneralSevice.cs",
@@ -378,7 +348,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 21,
               "Title": "AdoDataAccess.cs",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\DataAccess\\AdoDataAccess.cs",
               "RelativeDocumentMoniker": "DataAccess\\AdoDataAccess.cs",
@@ -390,7 +360,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 22,
               "Title": "EncryptDecryptService.cs",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\HelperClass\\EncryptDecryptService.cs",
               "RelativeDocumentMoniker": "HelperClass\\EncryptDecryptService.cs",
@@ -402,7 +372,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 20,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
