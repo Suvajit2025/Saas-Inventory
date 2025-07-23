@@ -32,5 +32,50 @@ namespace Invi.Models
         public string EmailOrMobile { get; set; }
         public string Password { get; set; }
     }
+    public class OrganizationModel
+    {
+        public int OrganizationId { get; set; }
+
+        [Required]
+        public int TenantId { get; set; }
+
+        [Required]
+        [Display(Name = "Organization Name")]
+        public string OrganizationName { get; set; }
+
+        public Guid OrganizationCode { get; set; } = Guid.NewGuid();
+
+        [Display(Name = "Business Type")]
+        public int BusinessTypeId { get; set; }
+
+        [Display(Name = "GSTIN")]
+        public string? GSTIN { get; set; }
+
+        [Display(Name = "PAN")]
+        public string? PAN { get; set; }
+
+        [Display(Name = "Address")]
+        public string? Address { get; set; }
+
+        public string? City { get; set; }
+        public string? State { get; set; }
+
+        [Display(Name = "PIN Code")]
+        public string? PINCode { get; set; }
+
+        [Display(Name = "Contact Person")]
+        public string? ContactPerson { get; set; }
+
+        [Display(Name = "Phone")]
+        public string? Phone { get; set; }
+
+        [EmailAddress]
+        public string? Email { get; set; }
+
+        public int IsPrimary { get; set; } = 1;
+        public int IsActive { get; set; } = 1;
+
+        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
+    }
 
 }

@@ -33,11 +33,11 @@ namespace Invi.Controllers
                 var errors = ModelState.Values.SelectMany(v => v.Errors)
                                               .Select(e => e.ErrorMessage)
                                               .ToList();
-
-                return BadRequest(string.Join(" | ", errors));
+                return BadRequest(new { success = false, message = string.Join(" | ", errors) });
             }
-            string encryptedPassword = BCrypt.Net.BCrypt.HashPassword(model.Password); 
-            // Prepare SP parameters
+
+            string encryptedPassword = BCrypt.Net.BCrypt.HashPassword(model.Password);
+
             var parameters = new Dictionary<string, object>
             {
                 { "@BusinessName", model.Company },
@@ -47,30 +47,51 @@ namespace Invi.Controllers
                 { "@Role", "Admin" }
             };
 
-            // Call the SP using DataService
             var resultTable = await _dataService.GetDataAsync("SP_Save_TenantRegister", parameters);
 
-            string existsType = "NONE";
-            if (resultTable != null && resultTable.Rows.Count > 0)
-            {
-                existsType = resultTable.Rows[0]["ExistsType"]?.ToString();
-            }
+            if (resultTable == null || resultTable.Rows.Count == 0)
+                return BadRequest(new { success = false, message = "Unknown error occurred." });
 
-            // Handle result
+            string existsType = resultTable.Rows[0]["ExistsType"]?.ToString() ?? "NONE";
+
             if (existsType == "EMAIL")
-                return BadRequest("Email already registered.");
+                return BadRequest(new { success = false, message = "Email already registered." });
+
             if (existsType == "MOBILE")
-                return BadRequest("Mobile number already registered.");
+                return BadRequest(new { success = false, message = "Mobile number already registered." });
 
-            // TODO: Proceed to save the user
-            return Ok("User registered successfully.");
+            // ✅ Get the TenantKey (GUID)
+            var tenantKey = resultTable.Rows[0]["TenanatKey"]?.ToString();
+
+            // ✅ Store cookie to redirect to Organization page
+            Response.Cookies.Append("TenantKey", tenantKey.ToString(), new CookieOptions
+            {
+                Expires = DateTimeOffset.UtcNow.AddDays(30),
+                IsEssential = true,
+                HttpOnly = true,
+                Secure = true
+            });
+
+            Response.Cookies.Append("NeedOrganization", "true", new CookieOptions
+            {
+                Expires = DateTimeOffset.UtcNow.AddDays(15), // Grace period
+                IsEssential = true,
+                HttpOnly = true,
+                Secure = true
+            });
+
+
+            // ✅ Return success response with TenantKey (GUID)
+            return Ok(new
+            {
+                success = true,
+                message = "Registration successful.", 
+            });
         }
 
-       
-        public IActionResult Login()
-        {
-            return View();
-        }
+
+
+
 
         [HttpPost]
         public async Task<IActionResult> SignIn([FromBody] SignInViewModel model)
@@ -124,6 +145,14 @@ namespace Invi.Controllers
                 UserId = userRow["UserId"]
             });
         }
+        public IActionResult Login()
+        {
+            return View();
+        }
 
+        public ActionResult Organization()
+        {
+            return View();
+        }
     }
 }

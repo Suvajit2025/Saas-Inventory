@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "D:\\APP\\InvoiceSystem\\Invi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\user\\organization.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:views\\user\\organization.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\wwwroot\\css\\organization.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:wwwroot\\css\\organization.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\client\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:views\\client\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\user\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:views\\user\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\user\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:views\\user\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\wwwroot\\css\\signup.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:wwwroot\\css\\signup.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\controllers\\clientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,12 +39,12 @@
       "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:models\\clientmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\shared\\_layoutuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:views\\shared\\_layoutuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\models\\commonmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,22 +55,6 @@
       "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\user\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:views\\user\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\user\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:views\\user\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -55,19 +63,11 @@
       "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:wwwroot\\assets\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\wwwroot\\css\\signup.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:wwwroot\\css\\signup.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UI_Themes\\template.doccure.io\\html\\template\\admin\\localization-details.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\helperclass\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:helperclass\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|solutionrelative:models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2823403-D4BC-4AA1-90B2-3947E6D4BB3E}|Invi.csproj|d:\\app\\invoicesystem\\invi\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -106,68 +106,149 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Organization.css",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\wwwroot\\css\\Organization.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\Organization.css",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\wwwroot\\css\\Organization.css",
+              "RelativeToolTip": "wwwroot\\css\\Organization.css",
+              "ViewState": "AgIAAL0AAAAAAAAAAAAAAMYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-23T16:59:27.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Organization.cshtml",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\User\\Organization.cshtml",
+              "RelativeDocumentMoniker": "Views\\User\\Organization.cshtml",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\User\\Organization.cshtml",
+              "RelativeToolTip": "Views\\User\\Organization.cshtml",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAIwHYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-23T16:08:42.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ClientController.cs",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\ClientController.cs",
               "RelativeDocumentMoniker": "Controllers\\ClientController.cs",
               "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\ClientController.cs",
               "RelativeToolTip": "Controllers\\ClientController.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAowFIAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowC8AAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-13T14:05:58.627Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Client\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Client\\Index.cshtml",
               "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Client\\Index.cshtml",
               "RelativeToolTip": "Views\\Client\\Index.cshtml",
-              "ViewState": "AgIAAAgBAAAAAAAAAAAAACIBAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAAAIsAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-13T14:23:13.586Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "SignUp.css",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\wwwroot\\css\\SignUp.css",
-              "RelativeDocumentMoniker": "wwwroot\\css\\SignUp.css",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\wwwroot\\css\\SignUp.css",
-              "RelativeToolTip": "wwwroot\\css\\SignUp.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-07-13T03:43:57.755Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAowCIAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T04:53:30.359Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 6,
               "Title": "UserModel.cs",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Models\\UserModel.cs",
               "RelativeDocumentMoniker": "Models\\UserModel.cs",
               "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Models\\UserModel.cs",
               "RelativeToolTip": "Models\\UserModel.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAwwCIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA1wE8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T03:59:49.911Z"
+              "WhenOpened": "2025-07-13T03:59:49.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ClientModel.cs",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Models\\ClientModel.cs",
+              "RelativeDocumentMoniker": "Models\\ClientModel.cs",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Models\\ClientModel.cs",
+              "RelativeToolTip": "Models\\ClientModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIQAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T16:45:42.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\User\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\User\\Login.cshtml",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\User\\Login.cshtml",
+              "RelativeToolTip": "Views\\User\\Login.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAC0AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-13T06:22:02.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAIwAAAAAAAAAAAAiwJgAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T03:27:12.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SignUp.cshtml",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\User\\SignUp.cshtml",
+              "RelativeDocumentMoniker": "Views\\User\\SignUp.cshtml",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\User\\SignUp.cshtml",
+              "RelativeToolTip": "Views\\User\\SignUp.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-13T03:28:39.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAUwDwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T04:53:30.359Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "SignUp.css",
+              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\wwwroot\\css\\SignUp.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\SignUp.css",
+              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\wwwroot\\css\\SignUp.css",
+              "RelativeToolTip": "wwwroot\\css\\SignUp.css",
+              "ViewState": "AgIAAKkAAAAAAAAAAAAswMoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-13T03:43:57.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "CommonModels.cs",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Models\\CommonModels.cs",
               "RelativeDocumentMoniker": "Models\\CommonModels.cs",
@@ -179,68 +260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ClientModel.cs",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Models\\ClientModel.cs",
-              "RelativeDocumentMoniker": "Models\\ClientModel.cs",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Models\\ClientModel.cs",
-              "RelativeToolTip": "Models\\ClientModel.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAywDIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T16:45:42.964Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAAC8AAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-13T07:57:36.673Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_LayoutUser.cshtml",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Shared\\_LayoutUser.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_LayoutUser.cshtml",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\Shared\\_LayoutUser.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_LayoutUser.cshtml",
-              "ViewState": "AgIAANwAAAAAAAAAAAAAAOgAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-13T07:56:41.641Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAmwHYAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T03:27:12.904Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\User\\Login.cshtml",
-              "RelativeDocumentMoniker": "Views\\User\\Login.cshtml",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\User\\Login.cshtml",
-              "RelativeToolTip": "Views\\User\\Login.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-13T06:22:02.007Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "style.css",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\wwwroot\\assets\\css\\style.css",
               "RelativeDocumentMoniker": "wwwroot\\assets\\css\\style.css",
@@ -252,7 +272,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "ProductController.cs",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
@@ -264,19 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SignUp.cshtml",
-              "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Views\\User\\SignUp.cshtml",
-              "RelativeDocumentMoniker": "Views\\User\\SignUp.cshtml",
-              "ToolTip": "D:\\APP\\InvoiceSystem\\Invi\\Views\\User\\SignUp.cshtml",
-              "RelativeToolTip": "Views\\User\\SignUp.cshtml",
-              "ViewState": "AgIAADwAAAAAAAAAAAAAAE8AAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-13T03:28:39.739Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
@@ -288,7 +296,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "localization-details.html",
               "DocumentMoniker": "D:\\UI_Themes\\template.doccure.io\\html\\template\\admin\\localization-details.html",
               "RelativeDocumentMoniker": "..\\..\\..\\UI_Themes\\template.doccure.io\\html\\template\\admin\\localization-details.html",
@@ -300,7 +308,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "DataService.cs",
               "DocumentMoniker": "D:\\APP\\InvoiceSystem\\Invi\\HelperClass\\DataService.cs",
               "RelativeDocumentMoniker": "HelperClass\\DataService.cs",
