@@ -1,181 +1,263 @@
-﻿@model Invi.Models.OrganizationModel
-
+﻿@model Invi.Models.PartyViewModel
 @{
-    ViewData["Title"] = "Create Organization";
-    Layout = null;
+	Layout = null;
 }
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-in">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Organization | My Invoice App</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Organization SetUp | My Invoice App</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="/main.css" type="text/css">
+	<link href="~/css/signup.css" rel="stylesheet" />
+	@* <link href="~/css/site.css" rel="stylesheet" /> *@
+	<!-- Add to <head> -->
+	<link href="~/lib/select2/dist/css/select2.min.css" rel="stylesheet" />
+	<style>
+		.select2-container--default .select2-selection--single {
+			height: 38px !important;
+			padding: 6px 12px;
+			border-radius: 0 0.375rem 0.375rem 0;
+			border: 1px solid #ced4da;
+			background-color: #fff;
+			font-size: 12px;
+		}
 
-    <!-- Bootstrap + Icons CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-	 
-    <link href="~/css/organization.css" rel="stylesheet" />
-    @* <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-            overflow: hidden;
-        }
+		.select2-selection__rendered {
+			line-height: 24px !important;
+			font-size: 12px;
+		}
 
-            body::before {
-                content: "";
-                background-image: url('/background-image.jpg');
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: -1;
-                opacity: 0.4;
-                transform: scale(1.05);
-            }
+		.select2-selection__arrow {
+			height: 36px !important;
+			font-size: 12px;
+		}
 
-        .form-card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 800px;
-        }
+		.input-group .select2-container {
+			flex: 1 1 auto;
+			width: 100% !important;
+			font-size:12px;
+		}
 
-        .form-title {
-            font-weight: 600;
-            margin-bottom: 30px;
-            text-align: center;
-        }
+		.select2-results__option {
+			padding: 6px;
+			user-select: none;
+			-webkit-user-select: none;
+			font-size: 12px;
+		}
+	</style>
 
-        .form-label {
-            font-weight: 500;
-        }
-
-        @@media (max-width: 768px) {
-            .form-card
-
-        {
-            padding: 20px;
-        }
-
-        }
-
-        .signup-wrapper {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-             
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 800px;
-            z-index: 1;
-            /*    margin: 50px;*/
-        }
-    </style> *@
 </head>
 <body>
+	<div class="signup-wrapper">
+		<h2 class="mt-0">Organization SetUp</h2>
+		<p>Create and manage invoices from one place.</p>
 
-    <div class=" signup-wrapper scroll-wrapper">
-            <h2 class="form-title">Create Organization</h2>
-            <form asp-action="SaveOrganization" method="post">
-                <div class="row g-3">
-                    <!-- Left Column -->
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <div class="input-wrapper">
-                                <i class="bi bi-building"></i>
-                                <input type="text" id="OrganizationName" name="OrganizationName" placeholder="Organization Name" required />
-                            </div>
-                        </div>
+		<!-- Company Name -->
+		<div class="input-group">
+			<div class="input-wrapper">
+				<i class="bi bi-building"></i>
+				<input type="text" id="OrganizationName" name="OrganizationName" placeholder="Organization Name" required />
+			</div>
+		</div>
 
-                        <div class="input-group">
-                            <div class="input-wrapper">
-                                <i class="bi bi-card-text"></i>
-                                <input type="text" id="GSTIN" name="GSTIN" placeholder="Input GSTIN No"  />
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <div class="input-wrapper">
-                                <i class="bi bi-card-text"></i>
-                            <input type="text" id="Address" name="Address" placeholder="Input Full Address" />
-                            </div>
-                        </div>
-                     
+		<!-- BusinessType -->
+		<div class="input-group">
+			<div class="input-wrapper">
+				<i class="bi bi-building"></i>	
+				<select id="BusinessTypeId" name="BusinessTypeId" class="form-control select2">
+					<option selected>-- Select Business Types --</option>
+					@foreach (var item in Model.BusinessTypes)
+					{
+						if (Model.BusinessTypeId == item.BusinessTypeId)
+						{
+							@:
+							<option value="@item.BusinessTypeId" selected>@item.BusinessTypeName</option>
+						}
+						else
+						{
+							@:
+							<option value="@item.BusinessTypeId">@item.BusinessTypeName</option>
+						}
+					}
+				</select>
+			</div>
+		</div>
 
-                        <div>
-                            <label asp-for="State" class="form-label"></label>
-                            <input asp-for="State" class="form-control" />
-                        </div>
+		<!-- Address -->
+		<div class="input-group">
+			<div class="input-wrapper">
+				<i class="bi bi-card-text"></i>
+				<input type="text" id="Address" name="Address" placeholder="Enter Full Address" />
+			</div>
+		</div>
 
-                        <div>
-                            <label asp-for="ContactPerson" class="form-label"></label>
-                            <input asp-for="ContactPerson" class="form-control" />
-                        </div>
+		<!-- City -->
+		<div class="input-group">
+			<div class="input-wrapper">
+				<i class="bi bi-card-text"></i>
+				<input type="text" id="City" name="City" placeholder="Enter City" />
+			</div>
+		</div>
 
-                        <div>
-                            <label asp-for="Email" class="form-label"></label>
-                            <input asp-for="Email" class="form-control" type="email" />
-                        </div>
-                    </div>
+		<!-- State -->
+		<div class="input-group">
+			<div class="input-wrapper">
+				<select id="StateId" name="StateId" class="form-control select2">
+					<option selected>-- Select State --</option>
+					@foreach (var item in Model.stateLists)
+					{
+						if (Model.StateId == item.StateId)
+						{
+							@:
+							<option value="@item.StateId" selected>@item.StateName</option>
+						}
+						else
+						{
+							@:
+							<option value="@item.StateId">@item.StateName</option>
+						}
+					}
+				</select>
+			</div>
+		</div>
+		<!-- PINCode -->
+		<div class="input-group">
+			<div class="input-wrapper">
+				<i class="bi bi-card-text"></i>
+				<input type="text" id="PINCode" name="PINCode" placeholder="Enter PIN Code" />
+			</div>
+		</div>
+		<!-- GST Registered Checkbox -->
+		<div class="input-group">
+			<div class="input-wrapper">
+				<input type="checkbox" id="IsGSTRegistered" />
+				<label for="IsGSTRegistered">Is this business registered for GST?</label>
+			</div>
+		</div>
+		 
+		<!-- GSTIN -->
+		<div class="input-group" id="gstinGroup" style="display: none;">
+			<div class="input-wrapper">
+				<i class="bi bi-phone-fill"></i>
+				<input type="text" id="GSTIN" name="GSTIN" placeholder="Enter GST Number" />
+			</div>
+		</div>
 
-                    <!-- Right Column -->
-                    <div class="col-md-6">
-                        <div>
-                            <label asp-for="BusinessTypeId" class="form-label">Business Type</label>
-                            <select asp-for="BusinessTypeId" class="form-select">
-                                <option value="">-- Select --</option>
-                                <option value="1">Private Ltd</option>
-                                <option value="2">Proprietorship</option>
-                            </select>
-                        </div>
+		<button class="btn" id="btnOrg" type="submit">Create Organization</button>
+	</div>
 
-                        <div>
-                            <label asp-for="PAN" class="form-label"></label>
-                            <input asp-for="PAN" class="form-control" />
-                        </div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="~/js/form-validator.js"></script>
+	<script src="~/assets/js/script.js"></script>
+	<script>
+		function validateRequiredFields(wrapperSelector) {
+		  let isValid = true;
+		  $(wrapperSelector + ' input[required]').each(function () {
+			const $input = $(this);
+			const val = $input.val().trim();
 
-                        <div>
-                            <label asp-for="City" class="form-label"></label>
-                            <input asp-for="City" class="form-control" />
-                        </div>
+			$input.next('.error-message').remove();
+			$input.removeClass('input-invalid input-valid');
 
-                        <div>
-                            <label asp-for="PINCode" class="form-label"></label>
-                            <input asp-for="PINCode" class="form-control" />
-                        </div>
+			if (!val) {
+			  $input.addClass('input-invalid');
+			  $input.after('<label class="error-message">This field is required</label>');
+			  isValid = false;
+			} else {
+			  $input.addClass('input-valid');
+			}
+		  });
+		  return isValid;
+		}
 
-                        <div>
-                            <label asp-for="Phone" class="form-label"></label>
-                            <input asp-for="Phone" class="form-control" />
-                        </div>
-                    </div>
-                </div>
+		function attachInputValidationListeners() {
+		  // Already called — placeholder for future input validations
+		}
 
-                <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-primary px-4 py-2">
-                        <i class="bi bi-check-circle me-2"></i>Save Organization
-                    </button>
-                </div>
-            </form>
-        </div> 
+		$(document).ready(function () {
+		  attachInputValidationListeners(); 
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+		  // Submit
+		  $('#btnOrg').click(function (e) {
+			e.preventDefault();
+			$('.error-message').remove();
+
+			if (!validateRequiredFields('.signup-wrapper')) return; 
+
+			const model = {
+			  Organization: $('#OrganizationName').val(),
+			  BusinessTypeId: $('#BusinessTypeId').val(),
+			  Address: $('#Address').val(),
+			  City: $('#City').val(),
+			  StateId: $('#StateId').val(),
+			  PINCode: $('#PINCode').val(),
+			  GSTIN: $('#GSTIN').val()
+			};
+
+			$.ajax({
+				url: '/User/OrganizationSave',
+				type: 'POST',
+				contentType: 'application/json',
+				dataType: 'json', // Ensures response is parsed as JSON
+				data: JSON.stringify(model),
+				beforeSend: function () {
+				$('#btnSignUp').prop('disabled', true).text('Signing Up...');
+				},
+				success: function (response) {
+				alert('✅ Signup successful!');
+				window.location.href = "/User/Organization";
+				},
+				error: function (xhr) {
+				let message = "❌ An error occurred.";
+				if (xhr.responseJSON && xhr.responseJSON.message) {
+					message = xhr.responseJSON.message;
+				} else if (xhr.responseText) {
+					message = xhr.responseText;
+				}
+				alert(message);
+				},
+				complete: function () {
+				$('#btnSignUp').prop('disabled', false).text('Sign Up');
+				}
+			});
+
+		  });
+		});
+	</script>
+	<!-- Add before </body> -->
+	<script src="~/lib/select2/dist/js/select2.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			// Initialize all .select2 elements
+			$('.select2').select2({
+				width: '100%'
+			});
+
+			// Generic focus handler for all select2 dropdowns
+			$(document).on('select2:open', () => {
+				let searchBox = document.querySelector('.select2-container--open .select2-search__field');
+				if (searchBox) {
+					searchBox.focus();
+				}
+			});
+		});
+	</script>
+	<script>
+		document.getElementById('IsGSTRegistered').addEventListener('change', function () {
+			const gstGroup = document.getElementById('gstinGroup');
+			if (this.checked) {
+				gstGroup.style.display = 'block';
+			} else {
+				gstGroup.style.display = 'none';
+				document.getElementById('GSTIN').value = ''; // Optional: clear value
+			}
+		});
+	</script>
+
 </body>
 </html>

@@ -1,6 +1,7 @@
 ﻿using Invi.HelperClass;
 using Invi.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using System.Text.RegularExpressions;
 
 namespace Invi.Controllers
@@ -88,10 +89,7 @@ namespace Invi.Controllers
                 message = "Registration successful.", 
             });
         }
-
-
-
-
+         
 
         [HttpPost]
         public async Task<IActionResult> SignIn([FromBody] SignInViewModel model)
@@ -150,9 +148,31 @@ namespace Invi.Controllers
             return View();
         }
 
-        public ActionResult Organization()
+        public async Task<ActionResult> Organization()
         {
-            return View();
+            var ds = await _dataService.GetAllDatasetAsync("SP_Get_PartyMasterData", new Dictionary<string, object>());
+
+            var model = new PartyViewModel
+            {
+                stateLists = ds.Tables[6].AsEnumerable().Select(r => new StateList
+                {
+                    StateId = Convert.ToInt32(r["StateId"]),
+                    StateName = r["StateName"].ToString()
+                }).ToList(),
+
+                BusinessTypes = ds.Tables[10].AsEnumerable().Select(r => new BusinessType
+                {
+                    BusinessTypeId = Convert.ToInt32(r["BusinessTypeId"]),
+                    BusinessTypeName = r["BusinessTypeName"].ToString()
+                }).ToList()
+            };
+
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> OrganizationSave([FromBody] OrganizationModel model)
+        {
+            return Ok(Ok(model));
         }
     }
 }

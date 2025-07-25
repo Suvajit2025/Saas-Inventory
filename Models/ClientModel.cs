@@ -34,7 +34,7 @@
         public bool? EnablePortal { get; set; } = null; // Nullable bool
         public DateTime? CreatedOn { get; set; } = null; // Nullable DateTime
         public long? CreatedBy { get; set; } // Nullable long
-
+        public int? BusinessTypeId { get; set; }
         public List<StateList>? stateLists { get; set; } // Nullable List
         public List<PartyType>? PartyTypes { get; set; } // Nullable List
         public List<CustomerType>? CustomerTypes { get; set; } // Nullable List
@@ -47,6 +47,7 @@
         public List<ContactPersonViewModel>? ContactPersons { get; set; } // Nullable List
         public PartyAddressViewModel? Partyaddress { get; set; } // Nullable object
         public PartyOtherDetailsViewModel? OtherDetails { get; set; } // Nullable object
+        public List<BusinessType>? BusinessTypes { get; set; } // Nullable List
     }
 
     public class PartyType
@@ -54,6 +55,11 @@
         public int? PartyTypeId { get; set; } // Nullable int
         public string? TypeCode { get; set; } // Nullable string
         public string? TypeName { get; set; } // Nullable string
+    }
+    public class BusinessType
+    {
+        public int? BusinessTypeId { get; set; } // Nullable int
+        public string? BusinessTypeName { get; set; } // Nullable string
     }
 
     public class CustomerType

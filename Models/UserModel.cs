@@ -51,9 +51,6 @@ namespace Invi.Models
         [Display(Name = "GSTIN")]
         public string? GSTIN { get; set; }
 
-        [Display(Name = "PAN")]
-        public string? PAN { get; set; }
-
         [Display(Name = "Address")]
         public string? Address { get; set; }
 
@@ -62,16 +59,6 @@ namespace Invi.Models
 
         [Display(Name = "PIN Code")]
         public string? PINCode { get; set; }
-
-        [Display(Name = "Contact Person")]
-        public string? ContactPerson { get; set; }
-
-        [Display(Name = "Phone")]
-        public string? Phone { get; set; }
-
-        [EmailAddress]
-        public string? Email { get; set; }
-
         public int IsPrimary { get; set; } = 1;
         public int IsActive { get; set; } = 1;
 
