@@ -113,13 +113,11 @@
 					{
 						if (Model.StateId == item.StateId)
 						{
-							@:
-							<option value="@item.StateId" selected>@item.StateName</option>
+							@:<option value="@item.StateId" selected>@item.StateName</option>
 						}
 						else
 						{
-							@:
-							<option value="@item.StateId">@item.StateName</option>
+							@:<option value="@item.StateId">@item.StateName</option>
 						}
 					}
 				</select>
@@ -133,13 +131,18 @@
 			</div>
 		</div>
 		<!-- GST Registered Checkbox -->
-		<div class="input-group">
+		@* <div class="input-group">
 			<div class="input-wrapper">
 				<input type="checkbox" id="IsGSTRegistered" />
 				<label for="IsGSTRegistered">Is this business registered for GST?</label>
 			</div>
+		</div> *@
+		<div class="terms">
+			<label class="terms-label">
+				<input type="checkbox" id="IsGSTRegistered"  />
+				<span>Is this business registered for GST?</span>
+			</label>
 		</div>
-		 
 		<!-- GSTIN -->
 		<div class="input-group" id="gstinGroup" style="display: none;">
 			<div class="input-wrapper">
@@ -150,6 +153,8 @@
 
 		<button class="btn" id="btnOrg" type="submit">Create Organization</button>
 	</div>
+	<!-- Scripts -->
+	<script src="~/assets/js/jquery-3.6.0.min.js"></script>
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="~/js/form-validator.js"></script>

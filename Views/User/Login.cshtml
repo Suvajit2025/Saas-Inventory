@@ -109,9 +109,13 @@
                     beforeSend: function () {
                         $('#btnSignIn').prop('disabled', true).text('Signing In...');
                     },
-                    success: function () {
-                        alert('✅ Login successful!');
-                        window.location.href = "/dashboard"; // update as needed
+                    success: function (response) {
+                        if (response.success && response.redirectUrl) {
+                            alert('✅ Login successful!');
+                            window.location.href = response.redirectUrl;
+                        } else {
+                            alert(response.message || "❌ Login failed.");
+                        }
                     },
                     error: function (xhr) {
                         let message = "❌ Login failed.";

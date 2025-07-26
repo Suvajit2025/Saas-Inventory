@@ -1,7 +1,10 @@
 ﻿using Invi.HelperClass;
 using Invi.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using System.Security.Claims;
 using System.Text.RegularExpressions;
 
 namespace Invi.Controllers
@@ -14,7 +17,7 @@ namespace Invi.Controllers
         public UserController(DataService dataSevice, EncryptDecryptService encryptDecryptService,GeneralSevice generalSevice)
         {
            _generalService = generalSevice;
-            _dataService = dataSevice;
+           _dataService = dataSevice;
         }
 
         public IActionResult Index()
@@ -61,52 +64,71 @@ namespace Invi.Controllers
             if (existsType == "MOBILE")
                 return BadRequest(new { success = false, message = "Mobile number already registered." });
 
-            // ✅ Get the TenantKey (GUID)
-            var tenantKey = resultTable.Rows[0]["TenanatKey"]?.ToString();
+            // ✅ Extract and validate TenantKey
+            string tenantKeyStr = resultTable.Rows[0]["TenantKey"]?.ToString(); // Corrected spelling
+            if (!Guid.TryParse(tenantKeyStr, out Guid tenantKey))
+            {
+                return StatusCode(500, new { success = false, message = "Invalid tenant key returned." });
+            }
 
-            // ✅ Store cookie to redirect to Organization page
-            Response.Cookies.Append("TenantKey", tenantKey.ToString(), new CookieOptions
+            // ✅ Set secure cookies
+            var cookieOptions = new CookieOptions
             {
                 Expires = DateTimeOffset.UtcNow.AddDays(30),
-                IsEssential = true,
                 HttpOnly = true,
-                Secure = true
-            });
+                Secure = true,
+                IsEssential = true,
+                SameSite = SameSiteMode.Lax // Improve CSRF protection
+            };
+
+            Response.Cookies.Append("TenantKey", tenantKey.ToString(), cookieOptions);
 
             Response.Cookies.Append("NeedOrganization", "true", new CookieOptions
             {
-                Expires = DateTimeOffset.UtcNow.AddDays(15), // Grace period
-                IsEssential = true,
+                Expires = DateTimeOffset.UtcNow.AddDays(15),
                 HttpOnly = true,
-                Secure = true
+                Secure = true,
+                IsEssential = true,
+                SameSite = SameSiteMode.Lax
             });
+            // ✅ Automatically log in the user
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, model.Email),
+                new Claim(ClaimTypes.Email, model.Email),
+                new Claim("TenantKey", tenantKey.ToString())
+            };
+
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
 
-            // ✅ Return success response with TenantKey (GUID)
+            // ✅ Return success with optional TenantKey
             return Ok(new
             {
                 success = true,
-                message = "Registration successful.", 
+                message = "Registration successful.",
+                tenantKey = tenantKey
             });
         }
-         
 
         [HttpPost]
         public async Task<IActionResult> SignIn([FromBody] SignInViewModel model)
         {
-            if (string.IsNullOrEmpty(model.EmailOrMobile))
+            if (string.IsNullOrWhiteSpace(model.EmailOrMobile))
                 return BadRequest("Please enter either Email or Mobile Number.");
 
-            if (string.IsNullOrEmpty(model.Password))
+            if (string.IsNullOrWhiteSpace(model.Password))
                 return BadRequest("Password is required.");
-
 
             if (!_generalService.IsValidEmail(model.EmailOrMobile) && !_generalService.IsValidMobile(model.EmailOrMobile))
                 return BadRequest("Enter a valid Email address or Mobile number.");
 
             var parameters = new Dictionary<string, object>
             {
-                { "@UserName", string.IsNullOrEmpty(model.EmailOrMobile) ? DBNull.Value : model.EmailOrMobile }
+                { "@UserName", model.EmailOrMobile }
             };
 
             var userTable = await _dataService.GetDataAsync("SP_Validate_UserLogin", parameters);
@@ -122,27 +144,62 @@ namespace Invi.Controllers
             if (!isActive)
                 return Unauthorized("Account is inactive.");
 
-            //compare password
-            var isMatch = BCrypt.Net.BCrypt.Verify(model.Password, dbPassword);
-            if (!isMatch)
+            if (!BCrypt.Net.BCrypt.Verify(model.Password, dbPassword))
                 return Unauthorized("Invalid credentials.");
 
-            // Role-based validation
-            if (!string.Equals(role, "Admin", StringComparison.OrdinalIgnoreCase))
-            {
-                if (userRow["OrganizationId"] == DBNull.Value)
-                    return BadRequest("Organization ID is required for non-admin users.");
-            }
+            var tenantId = userRow["TenantId"]?.ToString();
+            var tenantKey = userRow["TenantKey"]?.ToString();
+            var userId = userRow["UserId"]?.ToString();
 
-            // Success response — you can return a token or user info
+            // ✅ Create Claims for authentication
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, model.EmailOrMobile),
+                new Claim(ClaimTypes.Role, role ?? ""),
+                new Claim("TenantId", tenantId ?? ""),
+                new Claim("UserId", userId ?? "")
+            };
+
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+            // ✅ Set custom cookies (TenantKey, UserId, Role)
+            var cookieOptions = new CookieOptions
+            {
+                Expires = DateTimeOffset.UtcNow.AddDays(30),
+                HttpOnly = true,
+                Secure = true,
+                IsEssential = true
+            };
+
+            Response.Cookies.Append("TenantKey", tenantKey ?? "", cookieOptions);
+            Response.Cookies.Append("UserId", userId ?? "", cookieOptions);
+            Response.Cookies.Append("Role", role ?? "", cookieOptions);
+
+            // ✅ Check if organization exists
+            var orgParams = new Dictionary<string, object>
+            {
+                { "@tenantKey", tenantKey }
+            };
+
+            var orgTable = await _dataService.GetDataAsync("SP_Check_OrganizationExists", orgParams);
+            bool hasOrganization = orgTable != null && orgTable.Rows.Count > 0;
+
+            // ✅ Return redirect info for SPA or JS handling
             return Ok(new
             {
-                Message = "Login successful.",
+                success = true,
+                message = "Login successful.",
                 Role = role,
-                TenantId = userRow["TenantId"],
-                UserId = userRow["UserId"]
+                TenantId = tenantId,
+                UserId = userId,
+                redirectUrl = hasOrganization ? "/Dashboard/Index" : "/User/Organization"
             });
         }
+
+
         public IActionResult Login()
         {
             return View();

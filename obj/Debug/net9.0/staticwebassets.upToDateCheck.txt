@@ -154,11 +154,10 @@ wwwroot\assets\plugins\owl-carousel\owl.video.play.html
 wwwroot\assets\plugins\select2\css\select2.min.css
 wwwroot\assets\plugins\select2\js\select2.min.js
 wwwroot\assets\plugins\slimscroll\jquery.slimscroll.min.js
-wwwroot\Background-Image.jpg
-wwwroot\css\Organization.css
+wwwroot\Images\Background-Image.jpg
 wwwroot\css\SignUp.css
 wwwroot\css\site.css
-wwwroot\favicon.ico
+wwwroot\Images\favicon.ico
 wwwroot\js\form-validator.js
 wwwroot\js\rocket-loader.min.js
 wwwroot\js\site.js
@@ -415,6 +414,7 @@ wwwroot\lib\select2\src\scss\theme\default\_single.scss
 wwwroot\lib\select2\src\scss\_dropdown.scss
 wwwroot\lib\select2\src\scss\_multiple.scss
 wwwroot\lib\select2\src\scss\_single.scss
+wwwroot\css\Organization.css
 D:\APP\InvoiceSystem\Invi\wwwroot\lib\jquery\LICENSE.txt
 D:\APP\InvoiceSystem\Invi\wwwroot\lib\jquery\dist\jquery.slim.min.map
 D:\APP\InvoiceSystem\Invi\wwwroot\lib\jquery\dist\jquery.slim.min.js
@@ -477,9 +477,9 @@ D:\APP\InvoiceSystem\Invi\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 D:\APP\InvoiceSystem\Invi\wwwroot\js\site.js
 D:\APP\InvoiceSystem\Invi\wwwroot\js\rocket-loader.min.js
 D:\APP\InvoiceSystem\Invi\wwwroot\js\form-validator.js
-D:\APP\InvoiceSystem\Invi\wwwroot\favicon.ico
-D:\APP\InvoiceSystem\Invi\wwwroot\css\site.css
 D:\APP\InvoiceSystem\Invi\wwwroot\css\SignUp.css
+D:\APP\InvoiceSystem\Invi\wwwroot\css\site.css
+D:\APP\InvoiceSystem\Invi\wwwroot\Images\favicon.ico
 D:\APP\InvoiceSystem\Invi\wwwroot\assets\plugins\slimscroll\jquery.slimscroll.min.js
 D:\APP\InvoiceSystem\Invi\wwwroot\assets\plugins\select2\js\select2.min.js
 D:\APP\InvoiceSystem\Invi\wwwroot\assets\plugins\select2\css\select2.min.css

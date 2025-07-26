@@ -1,0 +1,2 @@
+D:\APP\InvoiceSystem\Invi\wwwroot\Background-Image.jpg
+D:\APP\InvoiceSystem\Invi\wwwroot\favicon.ico

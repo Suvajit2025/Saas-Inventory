@@ -338,9 +338,7 @@ D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\a6nikn5j1l-kzs3ewc8y2.gz
 D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\y59xeezuam-dnajsgqmtb.gz
 D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\roa4uywiww-2b9nsb2cli.gz
 D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\ab851s5gph-07usicd9p8.gz
-D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\q69l4n78yk-i6r0bp5iod.gz
 D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\4z6xpeqakl-b9sayid5wm.gz
-D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\18shtztsdt-61n19gt1b8.gz
 D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\cw04wv63yk-fh0at53vv7.gz
 D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\loa6kyw25q-g35k264986.gz
 D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\6ymh4751o6-xtxxf3hu2r.gz
@@ -600,3 +598,5 @@ D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\dvlahoh7b4-km4t2zhlx1.gz
 D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\f8duago8gz-dyfis4kcey.gz
 D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\Invi.sourcelink.json
 D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\4okh8w4dyj-9ud1q90rr0.gz
+D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\q69l4n78yk-ygwdaa49bn.gz
+D:\APP\InvoiceSystem\Invi\obj\Debug\net9.0\compressed\knvkeurdeb-61n19gt1b8.gz
