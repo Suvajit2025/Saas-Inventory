@@ -18,7 +18,7 @@ namespace Invi.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var ds = await _dataService.GetAllDatasetAsync("SP_Get_PartyMasterData", new Dictionary<string, object>());
+            var ds = await _dataService.GetAllDatasetAsync("SP_Get_MasterData", new Dictionary<string, object>());
             var viewModel = new PartyViewModel
             {
                 AddressTypes = ds.Tables[0].AsEnumerable().Select(row => new AddressType

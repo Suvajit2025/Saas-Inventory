@@ -55,8 +55,13 @@
 <body>
 	<div class="signup-wrapper">
 		<h2 class="mt-0">Organization SetUp</h2>
-		<p>Create and manage invoices from one place.</p>
+		<p>
+			Hello,<b> @(ViewBag.TenantName ?? "Guest")</b>
+			<br />
+			Enter your organization details to get started with Our Invoice.
+		</p>
 
+		@Html.AntiForgeryToken()
 		<!-- Company Name -->
 		<div class="input-group">
 			<div class="input-wrapper">
@@ -157,6 +162,7 @@
 	<script src="~/assets/js/jquery-3.6.0.min.js"></script>
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	@await Html.PartialAsync("_AjaxSetup")
 	<script src="~/js/form-validator.js"></script>
 	<script src="~/assets/js/script.js"></script>
 	<script>

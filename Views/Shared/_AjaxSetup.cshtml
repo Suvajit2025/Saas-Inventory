@@ -1,0 +1,19 @@
+﻿@* File: Views/Shared/_AjaxSetup.cshtml *@
+<script>
+    // Setup global headers for all AJAX calls
+    $.ajaxSetup({
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    });
+
+    $(document).ajaxError(function (event, jqxhr) {
+        if (jqxhr.status === 401) {
+            // Redirect to login if session expired
+            window.location.href = '/User/Login';
+        } else if (jqxhr.status === 403) {
+            // Redirect to access denied
+            window.location.href = '/User/AccessDenied';
+        }
+    });
+</script>

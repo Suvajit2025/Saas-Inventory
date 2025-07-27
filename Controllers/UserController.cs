@@ -3,6 +3,7 @@ using Invi.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Data;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
@@ -195,7 +196,7 @@ namespace Invi.Controllers
                 Role = role,
                 TenantId = tenantId,
                 UserId = userId,
-                redirectUrl = hasOrganization ? "/Dashboard/Index" : "/User/Organization"
+                redirectUrl = hasOrganization ? "/TenantTransaction/Dashboard" : "/User/Organization"
             });
         }
 
@@ -207,7 +208,24 @@ namespace Invi.Controllers
 
         public async Task<ActionResult> Organization()
         {
-            var ds = await _dataService.GetAllDatasetAsync("SP_Get_PartyMasterData", new Dictionary<string, object>());
+            // Step 1: Get session value and deserialize
+            string? tenantSessionJson = HttpContext.Session.GetString("TenantSession");
+
+            string tenantName = "Unknown Tenant";
+
+            if (!string.IsNullOrEmpty(tenantSessionJson))
+            {
+                var tenantSession = JsonConvert.DeserializeObject<TenantSessionModel>(tenantSessionJson);
+                if (tenantSession != null)
+                {
+                    tenantName = tenantSession.TenantName;
+                }
+            }
+
+            ViewBag.TenantName = tenantName;
+
+            // Step 2: Load Master data
+            var ds = await _dataService.GetAllDatasetAsync("SP_Get_MasterData", new Dictionary<string, object>());
 
             var model = new PartyViewModel
             {

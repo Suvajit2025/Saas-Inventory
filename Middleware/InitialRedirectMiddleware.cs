@@ -1,10 +1,13 @@
 ﻿using Invi.HelperClass;
+using Invi.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -25,6 +28,7 @@ namespace Invi.Middleware
         {
             var path = context.Request.Path.Value?.ToLower();
 
+            // Allow static files and public routes
             if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".png") ||
                 path.EndsWith(".jpg") || path.EndsWith(".jpeg") || path.EndsWith(".gif") ||
                 path.EndsWith(".svg") || path.EndsWith(".woff") || path.EndsWith(".ttf") ||
@@ -36,71 +40,92 @@ namespace Invi.Middleware
                 return;
             }
 
-            var isAuthenticated = context.User?.Identity?.IsAuthenticated ?? false;
+            // STEP 1: Check SESSION first
+            var tenantSessionJson = context.Session.GetString("TenantSession");
+            TenantSessionModel tenantSession = null;
 
-            if (!isAuthenticated)
+            if (!string.IsNullOrEmpty(tenantSessionJson))
             {
-                // 🔁 Fallback: check for your custom cookies
-                var tenantKeyExists = context.Request.Cookies.ContainsKey("TenantKey");
-                var needOrg = context.Request.Cookies["NeedOrganization"];
-                if (tenantKeyExists)
+                tenantSession = JsonConvert.DeserializeObject<TenantSessionModel>(tenantSessionJson);
+            }
+            else
+            {
+                // STEP 2: Check COOKIE only if session is missing
+                var tenantKey = context.Request.Cookies["TenantKey"];
+
+                if (string.IsNullOrEmpty(tenantKey))
                 {
-                    // 🧠 Optional: rehydrate identity from cookie and sign in
-                    var claims = new List<Claim>
+                    context.Response.Redirect("/user/login");
+                    return;
+                }
+
+                // STEP 3: Fetch from DB and set session
+                using (var scope = _scopeFactory.CreateScope())
+                {
+                    var dataService = scope.ServiceProvider.GetRequiredService<DataService>();
+                    var parameters = new Dictionary<string, object> { { "@tenantKey", tenantKey } };
+                    var orgTable = await dataService.GetDataAsync("SP_Check_OrganizationExists", parameters);
+
+                    if (orgTable == null || orgTable.Rows.Count == 0)
                     {
-                        new Claim("TenantKey", context.Request.Cookies["TenantKey"]),
-                        new Claim("NeedOrganization", needOrg ?? "false")
+                        // Invalid tenant - clear cookies and redirect to login
+                        context.Response.Cookies.Delete("TenantKey");
+                        context.Response.Cookies.Delete("NeedOrganization");
+                        context.Response.Cookies.Delete("username");
+
+                        await context.SignOutAsync();
+                        context.Response.Redirect("/user/login");
+                        return;
+                    }
+
+                    var row = orgTable.Rows[0];
+                    tenantSession = new TenantSessionModel
+                    {
+                        TenantId = Convert.ToInt32(row["TenantId"]),
+                        TenantCode = Guid.Parse(row["TenantCode"].ToString()),
+                        TenantName = row["BusinessName"].ToString(),
+                        Email = row["Email"].ToString(),
+                        Phone = row["Phone"].ToString(),
+                        CreatedOn = Convert.ToDateTime(row["CreatedOn"]),
+                        IsActive = Convert.ToBoolean(row["IsActive"]),
+                        OrgExists = Convert.ToBoolean(row["ExistsFlag"])
                     };
+
+                    context.Session.SetString("TenantSession", JsonConvert.SerializeObject(tenantSession));
+                }
+
+                // STEP 4: Also authenticate user if not yet authenticated
+                if (!(context.User?.Identity?.IsAuthenticated ?? false))
+                {
+                    var claims = new List<Claim>
+            {
+                new Claim("TenantKey", tenantSession.TenantCode.ToString()),
+                new Claim("NeedOrganization", tenantSession.OrgExists.ToString())
+            };
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var principal = new ClaimsPrincipal(identity);
                     await context.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-                    // ⚠️ Now skip login redirect
-                }
-                else
-                {
-                    context.Response.Redirect("/user/Login");
-                    return;
                 }
             }
 
-            var tenantKey = context.Request.Cookies["TenantKey"];
-
-            if (string.IsNullOrEmpty(tenantKey))
+            // STEP 5: Routing logic based on OrgExists
+            if (!tenantSession.OrgExists && !path.Contains("/user/organization"))
             {
-                context.Response.Redirect("/user/Logout");
+                context.Response.Redirect("/user/organization");
                 return;
             }
 
-            // ✅ Create scope to resolve DataService
-            using (var scope = _scopeFactory.CreateScope())
+            if (tenantSession.OrgExists &&
+                (path == "/" || path == "/home/index" || path == "/user/organization"))
             {
-                var dataService = scope.ServiceProvider.GetRequiredService<DataService>();
-
-                var parameters = new Dictionary<string, object>
-                {
-                    { "@tenantKey", tenantKey }
-                };
-
-                var orgTable = await dataService.GetDataAsync("SP_Check_OrganizationExists", parameters);
-                bool organizationExists = orgTable != null && orgTable.Rows.Count > 0;
-
-                if (!organizationExists && !path.Contains("/user/organization"))
-                {
-                    context.Response.Redirect("/User/Organization");
-                    return;
-                }
-
-                if (organizationExists && (path == "/" || path == "/home/index" || path == "/user/organization"))
-                {
-                    context.Response.Redirect("/Dashboard/Index");
-                    return;
-                }
+                context.Response.Redirect("/tenanttransaction/dashboard");
+                return;
             }
 
             await _next(context);
         }
+
     }
 
     public static class InitialRedirectMiddlewareExtensions

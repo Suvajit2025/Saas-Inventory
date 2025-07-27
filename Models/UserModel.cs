@@ -55,7 +55,7 @@ namespace Invi.Models
         public string? Address { get; set; }
 
         public string? City { get; set; }
-        public string? State { get; set; }
+        public int? StateId { get; set; }
 
         [Display(Name = "PIN Code")]
         public string? PINCode { get; set; }
@@ -64,5 +64,15 @@ namespace Invi.Models
 
         public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
     }
-
+    public class TenantSessionModel
+    {
+        public int TenantId { get; set; }
+        public Guid TenantCode { get; set; }
+        public string TenantName { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public bool IsActive { get; set; }
+        public bool OrgExists { get; set; }
+    }
 }
