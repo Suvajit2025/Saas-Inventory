@@ -16,7 +16,7 @@ namespace Invi.Controllers
             _dataService = dataSevice;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Clientadd()
         {
             var ds = await _dataService.GetAllDatasetAsync("SP_Get_MasterData", new Dictionary<string, object>());
             var viewModel = new PartyViewModel

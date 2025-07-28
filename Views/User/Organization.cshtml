@@ -40,7 +40,7 @@
 		.input-group .select2-container {
 			flex: 1 1 auto;
 			width: 100% !important;
-			font-size:12px;
+			font-size: 12px;
 		}
 
 		.select2-results__option {
@@ -60,6 +60,7 @@
 			<br />
 			Enter your organization details to get started with Our Invoice.
 		</p>
+		<input type="hidden" id="TenantId" value="@Model.TenantId" />
 
 		@Html.AntiForgeryToken()
 		<!-- Company Name -->
@@ -73,7 +74,7 @@
 		<!-- BusinessType -->
 		<div class="input-group">
 			<div class="input-wrapper">
-				<i class="bi bi-building"></i>	
+				<i class="bi bi-building"></i>
 				<select id="BusinessTypeId" name="BusinessTypeId" class="form-control select2">
 					<option selected>-- Select Business Types --</option>
 					@foreach (var item in Model.BusinessTypes)
@@ -118,11 +119,13 @@
 					{
 						if (Model.StateId == item.StateId)
 						{
-							@:<option value="@item.StateId" selected>@item.StateName</option>
+							@:
+							<option value="@item.StateId" selected>@item.StateName</option>
 						}
 						else
 						{
-							@:<option value="@item.StateId">@item.StateName</option>
+							@:
+							<option value="@item.StateId">@item.StateName</option>
 						}
 					}
 				</select>
@@ -144,7 +147,7 @@
 		</div> *@
 		<div class="terms">
 			<label class="terms-label">
-				<input type="checkbox" id="IsGSTRegistered"  />
+				<input type="checkbox" id="IsGSTRegistered" />
 				<span>Is this business registered for GST?</span>
 			</label>
 		</div>
@@ -191,51 +194,60 @@
 		}
 
 		$(document).ready(function () {
-		  attachInputValidationListeners(); 
+		  attachInputValidationListeners();
 
 		  // Submit
 		  $('#btnOrg').click(function (e) {
 			e.preventDefault();
 			$('.error-message').remove();
 
-			if (!validateRequiredFields('.signup-wrapper')) return; 
+			if (!validateRequiredFields('.signup-wrapper')) return;
 
-			const model = {
-			  Organization: $('#OrganizationName').val(),
-			  BusinessTypeId: $('#BusinessTypeId').val(),
-			  Address: $('#Address').val(),
-			  City: $('#City').val(),
-			  StateId: $('#StateId').val(),
-			  PINCode: $('#PINCode').val(),
-			  GSTIN: $('#GSTIN').val()
-			};
+					const model = {
+						TenantId: parseInt($('#TenantId').val()), // make sure it's numeric
+						OrganizationName: $('#OrganizationName').val().trim(),
+						BusinessTypeId: parseInt($('#BusinessTypeId').val()),
+						Address: $('#Address').val().trim(),
+						City: $('#City').val().trim(),
+						StateId: parseInt($('#StateId').val()),
+						PINCode: $('#PINCode').val().trim(),
+						GSTIN: $('#GSTIN').val().trim()
+					};
+
+
 
 			$.ajax({
-				url: '/User/OrganizationSave',
-				type: 'POST',
-				contentType: 'application/json',
-				dataType: 'json', // Ensures response is parsed as JSON
-				data: JSON.stringify(model),
-				beforeSend: function () {
-				$('#btnSignUp').prop('disabled', true).text('Signing Up...');
-				},
-				success: function (response) {
-				alert('✅ Signup successful!');
-				window.location.href = "/User/Organization";
-				},
-				error: function (xhr) {
-				let message = "❌ An error occurred.";
-				if (xhr.responseJSON && xhr.responseJSON.message) {
-					message = xhr.responseJSON.message;
-				} else if (xhr.responseText) {
-					message = xhr.responseText;
-				}
-				alert(message);
-				},
-				complete: function () {
-				$('#btnSignUp').prop('disabled', false).text('Sign Up');
-				}
+					url: '/User/Organization',
+					type: 'POST',
+					contentType: 'application/json',
+					dataType: 'json',
+					data: JSON.stringify(model),
+					beforeSend: function () {
+						$('#btnOrg').prop('disabled', true).text('Creating Organization...');
+					},
+					success: function (response) {
+						if (response.success) {
+							alert('✅ Organization created successfully!');
+							// ✅ Redirect to /{OrganizationKey}/Dashboard
+							window.location.href = '/' + response.organizationKey + '/Dashboard';
+						} else {
+							alert('⚠️ ' + (response.message || 'Unknown error'));
+						}
+					},
+					error: function (xhr) {
+						let message = "❌ An error occurred.";
+						if (xhr.responseJSON && xhr.responseJSON.message) {
+							message = xhr.responseJSON.message;
+						} else if (xhr.responseText) {
+							message = xhr.responseText;
+						}
+						alert(message);
+					},
+					complete: function () {
+						$('#btnOrg').prop('disabled', false).text('Create Organization'); // consistent button ID and label
+					}
 			});
+
 
 		  });
 		});

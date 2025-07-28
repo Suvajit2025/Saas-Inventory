@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@inject IHttpContextAccessor HttpContextAccessor
+@{
+	var session = HttpContextAccessor.HttpContext?.Session;
+	var tenantSession = session?.GetObject<TenantSessionModel>("TenantSession");
+	var orgKey = tenantSession?.OrganizationKey.ToString() ?? "";
+	var orgName = tenantSession?.OrganizationName.ToString() ?? "";
+	var UserName = tenantSession?.LoginUser.ToString() ?? "";
+	var Role = tenantSession?.Role.ToString() ?? "";
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -87,7 +97,12 @@
 
 
 			<ul class="nav nav-tabs user-menu">
-
+				<li class="nav-item">
+					<a class="nav-link" href="/@orgKey/Dashboard">
+						<i class="bi bi-building"></i>
+						@orgName
+					</a>
+				</li>
 				<li class="nav-item">
 					<a href="#" id="dark-mode-toggle" class="dark-mode-toggle">
 						<i class="feather-sun light-mode"></i><i class="feather-moon dark-mode"></i>
@@ -177,15 +192,15 @@
 								<img src="~/assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle"> @* Comes From Database *@
 							</div>
 							<div class="user-text">
-								<h6>Tenant Admin User</h6> @* Comes From Database User *@
-								<p class="text-muted mb-0">Administrator</p> @* Comes From Database Role *@
+								<h6>@UserName</h6> @* Comes From Database User *@
+								<p class="text-muted mb-0">@Role</p> @* Comes From Database Role *@
 							</div>
 						</div>
 						<a class="dropdown-item" href="profile.html"><i class="feather-user me-1"></i> My Profile</a>
 						<a class="dropdown-item" href="profile.html"><i class="feather-edit me-1"></i> Edit Profile</a>
 						<a class="dropdown-item" href="account-settings.html"><i class="feather-sliders me-1"></i> Account Settings</a>
 						<hr class="my-0 ms-2 me-2">
-						<a class="dropdown-item" href="/User/SignIn.cshtml"><i class="feather-log-out me-1"></i> Logout</a>
+						<a class="dropdown-item" href="/@orgKey/Logout"><i class="feather-log-out me-1"></i> Logout</a>
 					</div>
 				</li>
 
@@ -200,7 +215,7 @@
 					<ul>
 						<li class="menu-title"><span>Main</span></li>
 						<li class="active">
-							<a href="/Home/Dashboard.cshtml"><i class="feather-grid"></i> <span>Dashboard</span></a>
+							<a href="/@orgKey/Dashboard"><i class="feather-grid"></i> <span>Dashboard</span></a>
 						</li>
 						
 						<li class="menu-title">
@@ -209,8 +224,8 @@
 						<li class="submenu">
 							<a href="#"><i class="feather-file-plus"></i> <span> Party Details</span> <span class="menu-arrow"></span></a>
 							<ul>
-								<li><a href="/Client/Index">Add Party</a></li>
-								<li><a href="pharmacy-category.html">View Party</a></li>
+								<li><a href="/@orgKey/Clientadd">Add Party</a></li>
+								<li><a href="/@orgKey/Client">View Party</a></li>
 							</ul>
 						</li>
 					</ul>

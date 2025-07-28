@@ -43,7 +43,7 @@ namespace Invi.Models
         [Display(Name = "Organization Name")]
         public string OrganizationName { get; set; }
 
-        public Guid OrganizationCode { get; set; } = Guid.NewGuid();
+        public Guid OrganizationCode { get; set; }
 
         [Display(Name = "Business Type")]
         public int BusinessTypeId { get; set; }
@@ -58,11 +58,7 @@ namespace Invi.Models
         public int? StateId { get; set; }
 
         [Display(Name = "PIN Code")]
-        public string? PINCode { get; set; }
-        public int IsPrimary { get; set; } = 1;
-        public int IsActive { get; set; } = 1;
-
-        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
+        public string? PINCode { get; set; } 
     }
     public class TenantSessionModel
     {
@@ -74,5 +70,13 @@ namespace Invi.Models
         public DateTime CreatedOn { get; set; }
         public bool IsActive { get; set; }
         public bool OrgExists { get; set; }
+        // Add these:
+        public int? OrganizationId { get; set; }
+        public Guid? OrganizationKey { get; set; }
+        public string? OrganizationName { get; set; }
+        public bool IsPrimary { get; set; }
+        // ✅ New: User Info
+        public string LoginUser { get; set; }
+        public string Role { get; set; }
     }
 }

@@ -137,7 +137,7 @@ namespace Invi.Controllers
                 return Unauthorized("Invalid credentials.");
 
             var userRow = userTable.Rows[0];
-
+            var Loginuser = userRow["User_Name"].ToString();
             var dbPassword = userRow["Password"]?.ToString();
             var role = userRow["Role"]?.ToString();
             var isActive = Convert.ToBoolean(userRow["IsActive"]);
@@ -151,14 +151,14 @@ namespace Invi.Controllers
             var tenantId = userRow["TenantId"]?.ToString();
             var tenantKey = userRow["TenantKey"]?.ToString();
             var userId = userRow["UserId"]?.ToString();
-
+            
             // ✅ Create Claims for authentication
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, model.EmailOrMobile),
+                new Claim(ClaimTypes.Name, Loginuser ?? ""),
                 new Claim(ClaimTypes.Role, role ?? ""),
                 new Claim("TenantId", tenantId ?? ""),
-                new Claim("UserId", userId ?? "")
+                new Claim("UserId", userId ?? ""), 
             };
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -188,6 +188,35 @@ namespace Invi.Controllers
             var orgTable = await _dataService.GetDataAsync("SP_Check_OrganizationExists", orgParams);
             bool hasOrganization = orgTable != null && orgTable.Rows.Count > 0;
 
+            var sessionModel = new TenantSessionModel
+            {
+                TenantId = Convert.ToInt32(tenantId),
+                TenantCode = Guid.Parse(tenantKey),
+                IsActive = true,
+                OrgExists = hasOrganization,
+                LoginUser = Loginuser,
+                Role = role
+            };
+
+            if (hasOrganization)
+            {
+                var row = orgTable.Rows[0];
+                sessionModel.TenantName = row["TenantName"]?.ToString();
+                sessionModel.Email = row["Email"]?.ToString();
+                sessionModel.Phone = row["Phone"]?.ToString();
+                sessionModel.CreatedOn = Convert.ToDateTime(row["CreatedOn"]);
+
+                sessionModel.OrganizationKey = row.Table.Columns.Contains("OrganizationKey") &&
+                                               Guid.TryParse(row["OrganizationKey"]?.ToString(), out Guid orgKey)
+                                               ? orgKey : (Guid?)null;
+
+                sessionModel.OrganizationName = row.Table.Columns.Contains("OrganizationName")
+                                               ? row["OrganizationName"]?.ToString() : null;
+            }
+
+            // ✅ Store session
+            HttpContext.Session.SetString("TenantSession", JsonConvert.SerializeObject(sessionModel));
+
             // ✅ Return redirect info for SPA or JS handling
             return Ok(new
             {
@@ -212,6 +241,7 @@ namespace Invi.Controllers
             string? tenantSessionJson = HttpContext.Session.GetString("TenantSession");
 
             string tenantName = "Unknown Tenant";
+            int tenantid = 0;
 
             if (!string.IsNullOrEmpty(tenantSessionJson))
             {
@@ -219,11 +249,12 @@ namespace Invi.Controllers
                 if (tenantSession != null)
                 {
                     tenantName = tenantSession.TenantName;
+                    tenantid = tenantSession.TenantId;
                 }
             }
 
             ViewBag.TenantName = tenantName;
-
+            
             // Step 2: Load Master data
             var ds = await _dataService.GetAllDatasetAsync("SP_Get_MasterData", new Dictionary<string, object>());
 
@@ -239,15 +270,107 @@ namespace Invi.Controllers
                 {
                     BusinessTypeId = Convert.ToInt32(r["BusinessTypeId"]),
                     BusinessTypeName = r["BusinessTypeName"].ToString()
-                }).ToList()
+                }).ToList(),
+
+                TenantId= tenantid
             };
 
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> OrganizationSave([FromBody] OrganizationModel model)
+        public async Task<IActionResult> Organization([FromBody] OrganizationModel model)
         {
-            return Ok(Ok(model));
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Invalid input.");
+            }
+            try 
+            {
+                model.OrganizationCode = Guid.NewGuid(); // ✅ generate valid guid
+                // Prepare parameters for SP_Insert_Organization
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@TenantId", model.TenantId },
+                    { "@OrganizationName", model.OrganizationName },
+                    { "@OrganizationCode", model.OrganizationCode }, // should be a Guid
+                    { "@BusinessTypeId", model.BusinessTypeId },
+                    { "@GSTIN", model.GSTIN ?? (object)DBNull.Value },
+                    { "@Address", model.Address ?? (object)DBNull.Value },
+                    { "@City", model.City ?? (object)DBNull.Value },
+                    { "@StateId", model.StateId ?? (object)DBNull.Value },
+                    { "@PINCode", model.PINCode ?? (object)DBNull.Value }
+                };
+
+                // Call stored procedure
+                var resultTable = await _dataService.GetDataAsync("SP_Insert_Organization", parameters);
+
+                if (resultTable == null || resultTable.Rows.Count == 0)
+                    return BadRequest(new { success = false, message = "Unknown error occurred while inserting organization." });
+
+                // Read result from stored procedure
+                string existsType = resultTable.Rows[0]["ExistsType"]?.ToString() ?? "NONE";
+                string organizationKeyStr = resultTable.Rows[0]["OrganizationKey"]?.ToString();
+                int organizationId= Convert.ToInt32(resultTable.Rows[0]["OrganizationId"]?.ToString());
+                if (existsType == "EXISTS")
+                    return BadRequest(new { success = false, message = "Organization already exists for this tenant." });
+
+                if (!Guid.TryParse(organizationKeyStr, out Guid organizationKey))
+                    return StatusCode(500, new { success = false, message = "Invalid organization key returned." });
+
+                 
+                // ✅ Build session model
+                var sessionModel = new TenantSessionModel
+                {
+                    TenantId = model.TenantId, 
+                    OrganizationId = organizationId,
+                    OrganizationKey = organizationKey,
+                    OrganizationName = model.OrganizationName
+                };
+
+                // ✅ Set session using extension
+                HttpContext.Session.SetObject("TenantSession", sessionModel);
+
+                // ✅ Save cookies
+                Response.Cookies.Append("OrgKey", organizationKey.ToString(), new CookieOptions
+                {
+                    HttpOnly = true,
+                    Expires = DateTimeOffset.UtcNow.AddDays(30)
+                });
+
+                // ✅ Return success + redirect URL
+                return Ok(new
+                {
+                    success = true,
+                    message = "Organization created successfully.",
+                    organizationKey = organizationKey,
+                    redirectUrl = $"/{organizationKey}/Dashboard"
+                });
+            }
+            catch(Exception ex)
+            {
+                // ✅ Proper logging
+                return StatusCode(500, new { success = false, message = "Exception: " + ex.Message });
+            }
+ 
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            // 1. Sign out of cookie authentication
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            // 2. Clear the session
+            HttpContext.Session.Clear();
+
+            // 3. Remove all cookies
+            foreach (var cookie in Request.Cookies.Keys)
+            {
+                Response.Cookies.Delete(cookie);
+            }
+
+            // 4. Redirect to login page
+            return Redirect("/User/Login");
+        }
+
     }
 }

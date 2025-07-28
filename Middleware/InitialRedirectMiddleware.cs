@@ -32,8 +32,8 @@ namespace Invi.Middleware
             if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".png") ||
                 path.EndsWith(".jpg") || path.EndsWith(".jpeg") || path.EndsWith(".gif") ||
                 path.EndsWith(".svg") || path.EndsWith(".woff") || path.EndsWith(".ttf") ||
-                path.EndsWith(".map") ||
-                path.Contains("/user/login") || path.Contains("/user/logout") ||
+                path.EndsWith(".map") || path.EndsWith(".ico")||
+                path.Contains("/user/login") || path.Contains("/user/signin") || path.Contains("/user/logout") ||
                 path.Contains("/user/signup") || path.Contains("/error"))
             {
                 await _next(context);
@@ -83,12 +83,21 @@ namespace Invi.Middleware
                     {
                         TenantId = Convert.ToInt32(row["TenantId"]),
                         TenantCode = Guid.Parse(row["TenantCode"].ToString()),
-                        TenantName = row["BusinessName"].ToString(),
+                        TenantName = row["TenantName"].ToString(),
                         Email = row["Email"].ToString(),
                         Phone = row["Phone"].ToString(),
                         CreatedOn = Convert.ToDateTime(row["CreatedOn"]),
                         IsActive = Convert.ToBoolean(row["IsActive"]),
-                        OrgExists = Convert.ToBoolean(row["ExistsFlag"])
+                        OrgExists = Convert.ToBoolean(row["OrgExists"]),
+                        // ✅ New Org details (assuming SP returns these)
+                        // ✅ Safe parse organization key
+                        OrganizationKey = row.Table.Columns.Contains("OrganizationKey") &&
+                     Guid.TryParse(row["OrganizationKey"]?.ToString(), out Guid orgKey)
+                     ? orgKey : (Guid?)null,
+
+                        OrganizationName = row.Table.Columns.Contains("OrganizationName")
+                     ? row["OrganizationName"]?.ToString()
+                     : null,
                     };
 
                     context.Session.SetString("TenantSession", JsonConvert.SerializeObject(tenantSession));
@@ -119,7 +128,8 @@ namespace Invi.Middleware
             if (tenantSession.OrgExists &&
                 (path == "/" || path == "/home/index" || path == "/user/organization"))
             {
-                context.Response.Redirect("/tenanttransaction/dashboard");
+                var redirectPath = $"/{tenantSession.OrganizationKey}/dashboard"; // ✅ Dynamic
+                context.Response.Redirect(redirectPath);
                 return;
             }
 
